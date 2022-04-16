@@ -1,0 +1,13 @@
+.home-container .fa-solid {
+    color: var(--font-light);
+}
+
+.home-input .fa-solid,
+.home-comment .fa-solid {
+    color: #60a5fa;
+}
+
+.dropdown {
+    color: var(--font-light);
+    border: 0.5px solid #bbbbbb;
+}

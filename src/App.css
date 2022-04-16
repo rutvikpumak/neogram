@@ -1,0 +1,59 @@
+:root {
+  --bg-color: #edf2f6;
+  --font-light: #6c757d;
+  box-sizing: border-box;
+
+}
+
+body {
+  background: var(--bg-color);
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1140px;
+}
+
+.aside-option {
+  color: var(--font-light);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 16px;
+  font-weight: 600;
+  display: block;
+}
+
+.aside-option:hover {
+  background: white;
+  color: rgb(83, 83, 83);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)
+}
+
+.active {
+  background: white;
+  color: rgb(83, 83, 83);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)
+}
+
+@media screen and (max-width:767px){
+  .aside-option {
+    color: var(--font-light);
+    cursor: pointer;
+    padding: 0;
+  }
+  .aside-option:hover {
+    background: none;
+    color: none;
+    box-shadow: none
+  }
+  .active {
+    background: none;
+    color: rgb(83, 83, 83);
+    box-shadow:none;
+    padding:  0;
+  }
+}
