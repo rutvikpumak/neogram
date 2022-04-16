@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600&family=Handlee&display=swap');
+.aside-container{
+ background: var(--bg-color);
+}
+
+.title{
+    font-family: 'Baloo Bhaijaan 2', cursive;
+font-family: 'Handlee', cursive;
+}
