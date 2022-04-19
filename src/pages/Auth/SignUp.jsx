@@ -1,8 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/social-logo.png";
+import { useAuth } from "../../context/auth/authContext";
 
 export function SignUp() {
+  const navigate = useNavigate();
+  const { token, signUpUser } = useAuth();
+  const signUpFields = {
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+  };
+  const [signUpForm, setSignUpForm] = useState(signUpFields);
+
+  const signUpHandler = () => {
+    const { email, password, firstName, lastName } = signUpForm;
+    if (email && password && firstName && lastName !== "") {
+      (async () => {
+        signUpUser(email, password, firstName, lastName);
+      })();
+    }
+  };
+
+  if (token) {
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  }
+
+  const fillFormValue = (event, fieldName) => {
+    const { value } = event.target;
+    setSignUpForm((prev) => ({ ...prev, [fieldName]: value }));
+  };
+
   return (
     <div className="w-full h-screen text-gray-800  px-4 py-6 flex flex-col justify-center sm:py-12">
       <div className="w-2/5 py-3 sm:max-w-xl mx-auto text-center md:w-3/4">
@@ -24,6 +55,8 @@ export function SignUp() {
                     type="text"
                     placeholder="First Name"
                     className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                    value={signUpForm.firstName}
+                    onChange={(e) => fillFormValue(e, "firstName")}
                     required
                   />
                 </div>
@@ -33,6 +66,8 @@ export function SignUp() {
                     type="text"
                     placeholder="Last Name"
                     className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                    value={signUpForm.lastName}
+                    onChange={(e) => fillFormValue(e, "lastName")}
                     required
                   />
                 </div>
@@ -42,6 +77,8 @@ export function SignUp() {
                 type="text"
                 placeholder="Email"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                value={signUpForm.email}
+                onChange={(e) => fillFormValue(e, "email")}
                 required
               />
               <label className="block mt-3 font-semibold">Password</label>
@@ -49,14 +86,17 @@ export function SignUp() {
                 type="password"
                 placeholder="Password"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                value={signUpForm.password}
+                onChange={(e) => fillFormValue(e, "password")}
                 required
               />
               <div>
-                <Link to="/">
-                  <button className="font-semibold w-full my-6 bg-blue-400 text-white py-2 px-6 rounded-lg hover:bg-blue-500">
-                    Create Account
-                  </button>
-                </Link>
+                <button
+                  className="font-semibold w-full my-6 bg-blue-400 text-white py-2 px-6 rounded-lg hover:bg-blue-500"
+                  onClick={() => signUpHandler()}
+                >
+                  Create Account
+                </button>
               </div>
               <div className="text-center  font-semibold">
                 <Link to="/login">

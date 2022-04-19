@@ -1,10 +1,7 @@
 import { Server, Model, RestSerializer } from "miragejs";
 import { posts } from "./backend/db/posts";
 import { users } from "./backend/db/users";
-import {
-  loginHandler,
-  signupHandler,
-} from "./backend/controllers/AuthController";
+import { loginHandler, signupHandler } from "./backend/controllers/AuthController";
 import {
   createPostHandler,
   getAllpostsHandler,
@@ -47,6 +44,8 @@ export function makeServer({ environment = "development" } = {}) {
           followers: [],
           following: [],
           bookmarks: [],
+          bio: "",
+          portfolio: "",
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
@@ -78,15 +77,9 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("users/edit", editUserHandler.bind(this));
       this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
       this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
-      this.post(
-        "/users/remove-bookmark/:postId/",
-        removePostFromBookmarkHandler.bind(this)
-      );
+      this.post("/users/remove-bookmark/:postId/", removePostFromBookmarkHandler.bind(this));
       this.post("/users/follow/:followUserId/", followUserHandler.bind(this));
-      this.post(
-        "/users/unfollow/:followUserId/",
-        unfollowUserHandler.bind(this)
-      );
+      this.post("/users/unfollow/:followUserId/", unfollowUserHandler.bind(this));
     },
   });
 }

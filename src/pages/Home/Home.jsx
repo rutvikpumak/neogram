@@ -33,7 +33,7 @@ export function Home() {
         <div className="bg-white p-4 rounded-xl flex">
           <img
             src="https://pbs.twimg.com/profile_images/1499426863193595910/-r88VRAQ_400x400.jpg"
-            className="h-12 rounded-full"
+            className="h-12 rounded-full sm:h-8"
           />
           <div className="post-container px-4 grow">
             <div className="flex items-center justify-between mb-2">
@@ -122,7 +122,7 @@ export function Home() {
         <div className="bg-white p-4 rounded-xl flex">
           <img
             src="https://pbs.twimg.com/profile_images/1499426863193595910/-r88VRAQ_400x400.jpg"
-            className="h-12 rounded-full"
+            className="h-12 rounded-full sm:h-8"
           />
           <div className="post-container px-4 grow">
             <div className="flex items-center justify-between mb-2">
@@ -207,10 +207,11 @@ export function Home() {
               </div>
             </div>
           </div>
-        </div> <div className="bg-white p-4 rounded-xl flex">
+        </div>{" "}
+        <div className="bg-white p-4 rounded-xl flex">
           <img
             src="https://pbs.twimg.com/profile_images/1499426863193595910/-r88VRAQ_400x400.jpg"
-            className="h-12 rounded-full"
+            className="h-12 rounded-full sm:h-8"
           />
           <div className="post-container px-4 grow">
             <div className="flex items-center justify-between mb-2">
@@ -297,7 +298,6 @@ export function Home() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

@@ -1,8 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/social-logo.png";
+import { useAuth } from "../../context/auth/authContext";
 
 export function Login() {
+  const navigate = useNavigate();
+  const { token, loginUser } = useAuth();
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    (async () => {
+      loginUser(loginForm.email, loginForm.password);
+    })();
+  }, [loginForm.email, loginForm.password]);
+
+  if (token) {
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  }
+
+  const loginHandler = () => {
+    setLoginForm((form) => ({
+      ...form,
+      email: "rutvikumak@gmail.com",
+      password: "rutvik123",
+    }));
+  };
+
   return (
     <div className="w-full h-screen text-gray-800  px-4 py-6 flex flex-col justify-center sm:py-12">
       <div className="w-2/5 py-3 sm:max-w-xl mx-auto text-center md:w-3/4">
@@ -22,6 +50,8 @@ export function Login() {
                 type="text"
                 placeholder="Email"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                value={loginForm.email}
+                onChange={(e) => setLoginForm((form) => ({ ...form, email: e.target.value }))}
                 required
               />
               <label className="block mt-3 font-semibold">Password</label>
@@ -29,14 +59,17 @@ export function Login() {
                 type="password"
                 placeholder="Password"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
+                value={loginForm.password}
+                onChange={(e) => setLoginForm((form) => ({ ...form, password: e.target.value }))}
                 required
               />
               <div>
-                <Link to="/">
-                  <button className="font-semibold w-full my-6 bg-blue-400 text-white py-2 px-6 rounded-lg hover:bg-blue-500">
-                    Sign In With Test
-                  </button>
-                </Link>
+                <button
+                  className="font-semibold w-full my-6 bg-blue-400 text-white py-2 px-6 rounded-lg hover:bg-blue-500"
+                  onClick={() => loginHandler()}
+                >
+                  Sign In With Test
+                </button>
               </div>
               <div className="text-center font-semibold">
                 <Link to="/sign-up">

@@ -1,5 +1,5 @@
 import "./App.css";
-import { MainContainer, NavBar } from "./component";
+import { MainContainer, NavBar, PrivateRoute } from "./component";
 import { Home, Modal, Profile, ProfileModal, Notification, Login, SignUp, Bookmark } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -12,33 +12,41 @@ function App() {
           <Route
             path="/"
             element={
-              <MainContainer>
-                <Home />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Home />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <MainContainer>
-                <Profile />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Profile />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/notification"
             element={
-              <MainContainer>
-                <Notification />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Notification />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/bookmark"
             element={
-              <MainContainer>
-                <Bookmark />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Bookmark />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route path="/login" element={<Login />} />
