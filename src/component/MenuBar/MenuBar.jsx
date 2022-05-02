@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./MenuBar.css";
 import logo from "../../assets/social-logo.png";
-
+import { logoutUser } from "../../features/Auth/authSlice";
+import { useDispatch } from "react-redux";
 export function MenuBar() {
+  const dispatch = useDispatch();
   return (
     <aside
       className={`aside-container flex flex-col mr-2 w-1/4 md:mr-0 md:fixed md:bottom-0 md:z-30 md:w-full `}
@@ -49,14 +51,14 @@ export function MenuBar() {
               <span className="md:hidden"> PROFILE</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "aside-option active " : "aside-option")}
-            >
-              <i className="fa-solid fa-arrow-right-from-bracket mr-3 md:mr-0" />
-              <span className="md:hidden">LOGOUT</span>
-            </NavLink>
+          <li
+            className="aside-option"
+            onClick={() => {
+              dispatch(logoutUser());
+            }}
+          >
+            <i className="fa-solid fa-arrow-right-from-bracket mr-3 md:mr-0" />
+            <span className="md:hidden">LOGOUT</span>
           </li>
           <li className="md:hidden">
             <button className="w-full cursor-pointer text-white bg-blue-400 font-bold rounded-2xl py-2 hover:opacity-80">
