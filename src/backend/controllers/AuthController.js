@@ -15,7 +15,7 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { username, password, ...rest } = JSON.parse(request.requestBody);
+  const { email: username, password, ...rest } = JSON.parse(request.requestBody);
   try {
     // check if username already exists
     const foundUser = schema.users.findBy({ username: username });
@@ -40,12 +40,11 @@ export const signupHandler = function (schema, request) {
       followers: [],
       following: [],
       bookmarks: [],
+      bio: "",
+      portfolio: "",
     };
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign(
-      { _id, username },
-      process.env.REACT_APP_JWT_SECRET
-    );
+    const encodedToken = sign({ _id, username }, process.env.REACT_APP_JWT_SECRET);
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(
@@ -65,34 +64,27 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
-  const { username, password } = JSON.parse(request.requestBody);
+  const { email: username, password } = JSON.parse(request.requestBody);
   try {
-    const foundUser = schema.users.findBy({ username: username });
+    const foundUser = schema.users.findBy({ username });
     if (!foundUser) {
       return new Response(
         404,
         {},
         {
-          errors: [
-            "The username you entered is not Registered. Not Found error",
-          ],
+          errors: ["The username you entered is not Registered. Not Found error"],
         }
       );
     }
     if (password === foundUser.password) {
-      const encodedToken = sign(
-        { _id: foundUser._id, username },
-        process.env.REACT_APP_JWT_SECRET
-      );
+      const encodedToken = sign({ _id: foundUser._id, username }, process.env.REACT_APP_JWT_SECRET);
       return new Response(200, {}, { foundUser, encodedToken });
     }
     return new Response(
       401,
       {},
       {
-        errors: [
-          "The credentials you entered are invalid. Unauthorized access error.",
-        ],
+        errors: ["The credentials you entered are invalid. Unauthorized access error."],
       }
     );
   } catch (error) {

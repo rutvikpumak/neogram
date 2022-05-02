@@ -1,7 +1,17 @@
 import "./App.css";
 import { MainContainer, NavBar } from "./component";
-import { Home, Modal, Profile, ProfileModal, Notification, Login, SignUp, Bookmark } from "./features";
+import {
+  Home,
+  Modal,
+  Profile,
+  ProfileModal,
+  Notification,
+  Login,
+  SignUp,
+  Bookmark,
+} from "./features";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "./component/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -12,33 +22,41 @@ function App() {
           <Route
             path="/"
             element={
-              <MainContainer>
-                <Home />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Home />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <MainContainer>
-                <Profile />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Profile />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/notification"
             element={
-              <MainContainer>
-                <Notification />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Notification />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route
             path="/bookmark"
             element={
-              <MainContainer>
-                <Bookmark />
-              </MainContainer>
+              <PrivateRoute>
+                <MainContainer>
+                  <Bookmark />
+                </MainContainer>
+              </PrivateRoute>
             }
           />
           <Route path="/login" element={<Login />} />
