@@ -1,10 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./MenuBar.css";
 import logo from "../../assets/social-logo.png";
-import { useModal } from "../../context/modal-context/modalContext";
 
 export function MenuBar() {
-  const { setModal } = useModal();
   return (
     <aside
       className={`aside-container flex flex-col mr-2 w-1/4 md:mr-0 md:fixed md:bottom-0 md:z-30 md:w-full `}
@@ -61,7 +59,7 @@ export function MenuBar() {
             </NavLink>
           </li>
           <li className="md:hidden">
-            <button className="w-full cursor-pointer text-white bg-blue-400 font-bold rounded-2xl py-2 hover:opacity-80" onClick={()=>setModal(true)}>
+            <button className="w-full cursor-pointer text-white bg-blue-400 font-bold rounded-2xl py-2 hover:opacity-80">
               Post
             </button>
           </li>

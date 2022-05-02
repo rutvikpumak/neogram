@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useModal } from "../../context/modal-context/modalContext";
 
 export function Profile() {
-  const { setProfileModal } = useModal();
   const [editModal, setEditModal] = useState(false);
   return (
     <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
@@ -26,10 +24,7 @@ export function Profile() {
               <p className="text-xl font-bold mr-2 cursor-pointer">Rutvik Umak</p>
               <p className="text-sm text-gray-400 cursor-pointer">@rutvik_umak</p>
             </div>
-            <button
-              className="px-2 py-1 rounded-md font-semibold text-gray-500 hover:bg-gray-100  ring-1 ring-gray-500 ring-inset self-start"
-              onClick={() => setProfileModal(true)}
-            >
+            <button className="px-2 py-1 rounded-md font-semibold text-gray-500 hover:bg-gray-100  ring-1 ring-gray-500 ring-inset self-start">
               Edit Profile
             </button>
           </div>

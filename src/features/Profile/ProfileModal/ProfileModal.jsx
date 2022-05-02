@@ -1,21 +1,12 @@
 import React from "react";
-import { useModal } from "../../../context/modal-context/modalContext";
 import "./ProfileModal.css";
 
 export function ProfileModal() {
-  const { profileModal, setProfileModal } = useModal();
   return (
-    <div
-      className={`modal-container justify-center items-center fixed ${
-        profileModal ? "flex" : "hidden"
-      }`}
-    >
+    <div className={`modal-container justify-center items-center hidden`}>
       <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 md:w-4/5">
         <div>
-          <i
-            className="text-2xl fa-solid fa-angle-left cursor-pointer"
-            onClick={() => setProfileModal(false)}
-          />
+          <i className="text-2xl fa-solid fa-angle-left cursor-pointer" />
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex ">

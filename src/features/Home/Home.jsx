@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { FollowBar, NavBar } from "../../component";
-import { useModal } from "../../context/modal-context/modalContext";
 import "./Home.css";
 
 export function Home() {
-  const { modal, setModal } = useModal();
   const [editModal, setEditModal] = useState(false);
   return (
-    <div className={`home-container w-2/4  md:w-full md:mx-4 ${modal && "pointer-events-none"}`}>
+    <div className={`home-container w-2/4  md:w-full md:mx-4 `}>
       <div
         className="home-input bg-white
          px-4 py-3 rounded-xl gap-4 mb-8 text-center border-b-2 border-blue-400 font-semibold"
@@ -19,15 +17,8 @@ export function Home() {
         flex justify-between items-center px-4 py-3 rounded-xl gap-4 mb-8"
       >
         <i className="text-xl fa-solid fa-circle-user cursor-pointer" />
-        <input
-          className="grow focus:outline-none"
-          placeholder="What's on your mind ?"
-          onClick={() => setModal(true)}
-        />
-        <i
-          className="text-xl fa-solid fa-circle-plus cursor-pointer"
-          onClick={() => setModal(true)}
-        />
+        <input className="grow focus:outline-none" placeholder="What's on your mind ?" />
+        <i className="text-xl fa-solid fa-circle-plus cursor-pointer" />
       </div>
       <div className="flex flex-col gap-6">
         <div className="bg-white p-4 rounded-xl flex">
@@ -207,7 +198,8 @@ export function Home() {
               </div>
             </div>
           </div>
-        </div> <div className="bg-white p-4 rounded-xl flex">
+        </div>{" "}
+        <div className="bg-white p-4 rounded-xl flex">
           <img
             src="https://pbs.twimg.com/profile_images/1499426863193595910/-r88VRAQ_400x400.jpg"
             className="h-12 rounded-full"
@@ -297,7 +289,6 @@ export function Home() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

@@ -3,16 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { ModalProvider } from "./context/modal-context/modalContext";
-
+import { store } from "./app/store";
+import { Provider } from "react-redux";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
+    <Provider store={store}>
       <App />
-    </ModalProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,6 +1,6 @@
 import "./App.css";
 import { MainContainer, NavBar } from "./component";
-import { Home, Modal, Profile, ProfileModal, Notification, Login, SignUp, Bookmark } from "./pages";
+import { Home, Modal, Profile, ProfileModal, Notification, Login, SignUp, Bookmark } from "./features";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
