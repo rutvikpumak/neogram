@@ -16,6 +16,8 @@ export function SignUp() {
   };
   const [signUpForm, setSignUpForm] = useState(signUpFields);
 
+  useEffect(() => token && navigate("/"), [token]);
+
   const signUpHandler = () => {
     const { email, password, firstName, lastName } = signUpForm;
     if (email && password && firstName && lastName !== "") {
@@ -24,8 +26,6 @@ export function SignUp() {
       })();
     }
   };
-
-  useEffect(() => token && navigate("/"), [token]);
 
   const fillFormValue = (event, fieldName) => {
     const { value } = event.target;
