@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export function Profile() {
+  const { user } = useSelector((state) => state.auth);
+  console.log(user);
   const [editModal, setEditModal] = useState(false);
   return (
     <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
