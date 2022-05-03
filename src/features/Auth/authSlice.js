@@ -39,7 +39,6 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
-console.log(initialState);
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -58,8 +57,6 @@ const authSlice = createSlice({
       state.authStatus = "pending";
     },
     [loginUser.fulfilled]: (state, action) => {
-      console.log("Login up fulffilled call");
-
       state.authStatus = "fulfilled";
       state.token = action.payload.encodedToken;
       state.user = action.payload.foundUser;
@@ -74,7 +71,6 @@ const authSlice = createSlice({
       state.authStatus = "pending";
     },
     [signUpUser.fulfilled]: (state, action) => {
-      console.log("Sign up fulffilled call", action.payload);
       state.authStatus = "fulfilled";
       state.token = action.payload.encodedToken;
       state.user = action.payload.createdUser;
