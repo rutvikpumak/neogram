@@ -1,10 +1,18 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { openModal } from "./profileModalSlice";
 
 export function Profile() {
-  const { user } = useSelector((state) => state.auth);
-  console.log(user);
+  const dispatch = useDispatch();
+  const { user, token } = useSelector((state) => state.auth);
   const [editModal, setEditModal] = useState(false);
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    setUserData(user);
+  }, [user]);
+
   return (
     <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
       <div
@@ -17,21 +25,21 @@ export function Profile() {
         className="profile-input bg-white
         flex items-start p-4 rounded-xl gap-4 my-8 flex-wrap"
       >
-        <img
-          src="https://pbs.twimg.com/profile_images/1499426863193595910/-r88VRAQ_400x400.jpg"
-          className="h-20 rounded-full"
-        />
+        <img src={userData.profilePic} className="h-20 w-20 rounded-full object-cover" />
         <div className="grow">
           <div className="flex justify-between mb-2">
             <div>
-              <p className="text-xl font-bold mr-2 cursor-pointer">Rutvik Umak</p>
-              <p className="text-sm text-gray-400 cursor-pointer">@rutvik_umak</p>
+              <p className="text-xl font-bold mr-2 cursor-pointer">{`${userData.firstName} ${userData.lastName}`}</p>
+              <p className="text-sm text-gray-400 cursor-pointer">@{userData.userHandler}</p>
             </div>
-            <button className="px-2 py-1 rounded-md font-semibold text-gray-500 hover:bg-gray-100  ring-1 ring-gray-500 ring-inset self-start">
-              Edit Profile
+            <button
+              className="px-2 py-1 rounded-md font-semibold text-gray-500 hover:bg-gray-100  ring-1 ring-gray-500 ring-inset self-start"
+              onClick={() => dispatch(openModal())}
+            >
+              Edit
             </button>
           </div>
-          <p className="text-gray-500 font-semibold mb-2">Bio</p>
+          <p className="text-gray-500 font-semibold mb-2">{userData.bio}</p>
           <div className="flex text-gray-500 font-semibold gap-8 mb-2 ">
             <span>21 Posts</span>
             <span>44 Followers</span>
@@ -40,16 +48,12 @@ export function Profile() {
           <div className="text-gray-500 text-xs font-semibold flex gap-4">
             <div>
               <a
-                href="https://rutvikumak.com"
+                href={userData.link}
                 className="text-blue-500 hover:underline decoration-1"
                 target="_blank"
               >
-                https://rutvikumak.com
+                {userData.link}
               </a>
-            </div>
-            <div>
-              <i class="fa-solid fa-calendar mr-2" />
-              <span>Joined on 21 Feb</span>
             </div>
           </div>
         </div>
