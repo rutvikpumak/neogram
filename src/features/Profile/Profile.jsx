@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { openModal } from "./profileModalSlice";
 
 export function Profile() {
   const dispatch = useDispatch();
-  const { user, token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const [editModal, setEditModal] = useState(false);
   const [userData, setUserData] = useState({});
 
