@@ -15,7 +15,7 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email: username, password, ...rest } = JSON.parse(request.requestBody);
+  const { username, password, ...rest } = JSON.parse(request.requestBody);
   try {
     // check if username already exists
     const foundUser = schema.users.findBy({ username: username });
@@ -37,11 +37,13 @@ export const signupHandler = function (schema, request) {
       username,
       password,
       ...rest,
+      userHandler: username.split("@")[0],
+      bio: "",
+      link: "",
+      profilePic: "https://www.w3schools.com/howto/img_avatar.png",
       followers: [],
       following: [],
       bookmarks: [],
-      bio: "",
-      portfolio: "",
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign({ _id, username }, process.env.REACT_APP_JWT_SECRET);
@@ -64,9 +66,9 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
-  const { email: username, password } = JSON.parse(request.requestBody);
+  const { username, password } = JSON.parse(request.requestBody);
   try {
-    const foundUser = schema.users.findBy({ username });
+    const foundUser = schema.users.findBy({ username: username });
     if (!foundUser) {
       return new Response(
         404,
