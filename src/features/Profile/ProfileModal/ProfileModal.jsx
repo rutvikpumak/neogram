@@ -46,7 +46,9 @@ export function ProfileModal() {
       className={`modal-container justify-center items-center fixed ${modal ? "flex" : "hidden"}`}
     >
       <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 lg:w-2/4">
-        <div onClick={() => dispatch(closeModal())}>
+        <div onClick={() =>{
+          dispatch(closeModal());
+          setUserForm(user)}}>
           <i className="text-2xl fa-solid fa-angle-left cursor-pointer" />
         </div>
         <div className="flex flex-col gap-4">
