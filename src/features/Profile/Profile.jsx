@@ -6,7 +6,7 @@ export function Profile() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [editModal, setEditModal] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(user);
 
   useEffect(() => {
     setUserData(user);

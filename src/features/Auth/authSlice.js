@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginUserService, signUpService, updateUserService } from "../../services";
 
+const initialState = {
+  token: localStorage.getItem("token") || null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+};
+
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, thunkAPI) => {
@@ -30,14 +35,10 @@ export const updateUser = createAsyncThunk("auth/updateUser", async (userData, t
     const response = await updateUserService(initialState.token, userData);
     return response.data;
   } catch (error) {
+    console.log(error,"Here her ")
     return thunkAPI.rejectWithValue(error);
   }
 });
-
-const initialState = {
-  token: localStorage.getItem("token") || null,
-  user: JSON.parse(localStorage.getItem("user")) || null,
-};
 
 const authSlice = createSlice({
   name: "auth",
@@ -74,7 +75,6 @@ const authSlice = createSlice({
       state.authStatus = "fulfilled";
       state.token = action.payload.encodedToken;
       state.user = action.payload.createdUser;
-      console.log(state.user, "state user");
       localStorage.setItem("token", state.token);
       localStorage.setItem("user", JSON.stringify(state.user));
     },
