@@ -10,7 +10,7 @@ export function ProfileModal() {
   const [userForm, setUserForm] = useState({});
   const dispatch = useDispatch();
 
-  const updateHandler = async () => {
+  const updateHandler = () => {
     dispatch(updateUser({ ...userForm }));
     dispatch(closeModal());
   };
