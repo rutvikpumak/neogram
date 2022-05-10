@@ -1,5 +1,11 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MainContainer, NavBar } from "./component";
+import { PrivateRoute } from "./component/PrivateRoute/PrivateRoute";
+import { getAllPost, getUserPost } from "./features/Home/postSlice";
+import { getAllUser } from "./features/Profile/userSlice";
 import {
   Home,
   Modal,
@@ -10,10 +16,19 @@ import {
   SignUp,
   Bookmark,
 } from "./features";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { PrivateRoute } from "./component/PrivateRoute/PrivateRoute";
 
 function App() {
+  const dispatch = useDispatch();
+  const { token, user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getAllPost());
+      dispatch(getAllUser());
+      dispatch(getUserPost(user.username));
+    }
+  }, [token]);
+
   return (
     <div className="container relative mx-auto">
       <Router>

@@ -46,9 +46,12 @@ export function ProfileModal() {
       className={`modal-container justify-center items-center fixed ${modal ? "flex" : "hidden"}`}
     >
       <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 lg:w-2/4">
-        <div onClick={() =>{
-          dispatch(closeModal());
-          setUserForm(user)}}>
+        <div
+          onClick={() => {
+            dispatch(closeModal());
+            setUserForm(user);
+          }}
+        >
           <i className="text-2xl fa-solid fa-angle-left cursor-pointer" />
         </div>
         <div className="flex flex-col gap-4">
@@ -65,7 +68,7 @@ export function ProfileModal() {
                 accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
                 type="file"
                 onChange={(e) => updateImageHandler(e.target.files[0])}
-              ></input>
+              />
             </div>
           </div>
           <div className="flex justify-between">
