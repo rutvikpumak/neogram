@@ -6,4 +6,6 @@ export {
   addPostService,
   deletePostService,
   editPostService,
+  likePostService,
+  dislikePostService,
 } from "./postService.js";

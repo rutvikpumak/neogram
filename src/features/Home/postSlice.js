@@ -5,6 +5,8 @@ import {
   addPostService,
   deletePostService,
   editPostService,
+  likePostService,
+  dislikePostService,
 } from "../../services";
 
 const initialState = {
@@ -33,6 +35,7 @@ export const getUserPost = createAsyncThunk("post/getUserPosts", async (username
 export const addUserPost = createAsyncThunk("post/addUserPost", async (postData, thunkAPI) => {
   try {
     const token = localStorage.getItem("token");
+    console.log(token);
     const response = await addPostService(postData, token);
     return response.data;
   } catch (error) {
@@ -59,6 +62,22 @@ export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async (pos
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+export const likeAndDislikePost = createAsyncThunk(
+  "post/likeAndDislikePost",
+  async ({ postId, isLike }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = isLike
+        ? await likePostService(postId, token)
+        : await dislikePostService(postId, token);
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const postSlice = createSlice({
   name: "post",
@@ -117,6 +136,17 @@ const postSlice = createSlice({
       state.allPosts = action.payload.posts.reverse();
     },
     [deleteUserPost.rejected]: (state, action) => {
+      state.postStatus = "rejected";
+      state.allPosts = action.payload;
+    },
+    [likeAndDislikePost.pending]: (state) => {
+      state.postStatus = "pending";
+    },
+    [likeAndDislikePost.fulfilled]: (state, action) => {
+      state.postStatus = "fulfilled";
+      state.allPosts = action.payload.posts.reverse();
+    },
+    [likeAndDislikePost.rejected]: (state, action) => {
       state.postStatus = "rejected";
       state.allPosts = action.payload;
     },
