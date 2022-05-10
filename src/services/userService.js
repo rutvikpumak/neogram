@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const updateUserService = async (token, userData) => {
-  return await axios.post(
+export const getAllUserService = () => axios.get("/api/users");
+
+export const updateUserService = (token, userData) => {
+  return axios.post(
     "/api/users/edit",
     {
       userData,

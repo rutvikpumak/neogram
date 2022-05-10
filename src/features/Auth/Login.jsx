@@ -51,6 +51,7 @@ export function Login() {
                 placeholder="Email"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
                 value={loginForm.email}
+                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
                 required
               />
               <label className="block mt-3 font-semibold">Password</label>
@@ -59,6 +60,7 @@ export function Login() {
                 placeholder="Password"
                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-blue-400 rounded-md"
                 value={loginForm.password}
+                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                 required
               />
               <div>

@@ -3,6 +3,7 @@ import "./MenuBar.css";
 import logo from "../../assets/social-logo.png";
 import { logoutUser } from "../../features/Auth/authSlice";
 import { useDispatch } from "react-redux";
+import { openPostModal } from "../../features/Home/Modal/postModalSlice";
 export function MenuBar() {
   const dispatch = useDispatch();
   return (
@@ -61,7 +62,10 @@ export function MenuBar() {
             <span className="md:hidden">LOGOUT</span>
           </li>
           <li className="md:hidden">
-            <button className="w-full cursor-pointer text-white bg-blue-400 font-bold rounded-2xl py-2 hover:opacity-80">
+            <button
+              className="w-full cursor-pointer text-white bg-blue-400 font-bold rounded-2xl py-2 hover:opacity-80"
+              onClick={() => dispatch(openPostModal())}
+            >
               Post
             </button>
           </li>
