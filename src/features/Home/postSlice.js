@@ -7,6 +7,8 @@ import {
   editPostService,
   likePostService,
   dislikePostService,
+  addBookmarkService,
+  removeBookmarkService,
 } from "../../services";
 
 const initialState = {
@@ -35,7 +37,6 @@ export const getUserPost = createAsyncThunk("post/getUserPosts", async (username
 export const addUserPost = createAsyncThunk("post/addUserPost", async (postData, thunkAPI) => {
   try {
     const token = localStorage.getItem("token");
-    console.log(token);
     const response = await addPostService(postData, token);
     return response.data;
   } catch (error) {
@@ -71,7 +72,6 @@ export const likeAndDislikePost = createAsyncThunk(
       const response = isLike
         ? await likePostService(postId, token)
         : await dislikePostService(postId, token);
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -79,6 +79,20 @@ export const likeAndDislikePost = createAsyncThunk(
   }
 );
 
+export const addAndRemoveBookmark = createAsyncThunk(
+  "post/addAndRemoveBookmark",
+  async ({ postId, isBookmark }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = isBookmark
+        ? await addBookmarkService(postId, token)
+        : await removeBookmarkService(postId, token);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 const postSlice = createSlice({
   name: "post",
   initialState,
@@ -147,6 +161,17 @@ const postSlice = createSlice({
       state.allPosts = action.payload.posts.reverse();
     },
     [likeAndDislikePost.rejected]: (state, action) => {
+      state.postStatus = "rejected";
+      state.allPosts = action.payload;
+    },
+    [addAndRemoveBookmark.pending]: (state) => {
+      state.postStatus = "pending";
+    },
+    [addAndRemoveBookmark.fulfilled]: (state, action) => {
+      state.postStatus = "fulfilled";
+      state.allPosts = action.payload.posts.reverse();
+    },
+    [addAndRemoveBookmark.rejected]: (state, action) => {
       state.postStatus = "rejected";
       state.allPosts = action.payload;
     },

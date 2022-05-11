@@ -9,3 +9,8 @@ export {
   likePostService,
   dislikePostService,
 } from "./postService.js";
+export {
+  getAllBookmarkService,
+  addBookmarkService,
+  removeBookmarkService,
+} from "./bookmarkService.js";
