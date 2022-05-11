@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { openPostModal } from "./Modal/postModalSlice";
-import { deleteUserPost } from "./postSlice";
+import { deleteUserPost, likeAndDislikePost } from "./postSlice";
 export function SinglePost({ post }) {
   const dispatch = useDispatch();
   const [editModal, setEditModal] = useState(false);
@@ -12,12 +12,16 @@ export function SinglePost({ post }) {
     _id,
     content,
     username,
-    likes: { likesCount },
+    likes: { likeCount, likedBy, dislikedBy },
   } = post;
   const userInfo = allUsers && allUsers?.find((user) => user.username === username);
+  const isLiked = likedBy?.some((like) => like.username === user.username);
 
   const editHandler = () => {
     dispatch(openPostModal(post));
+  };
+  const likeDislikeHandler = () => {
+    dispatch(likeAndDislikePost({ postId: _id, isLike: isLiked ? false : true }));
   };
 
   return userInfo ? (
@@ -59,13 +63,15 @@ export function SinglePost({ post }) {
         <div>
           <p className="text-gray-500">{content}</p>
         </div>
-        <div className="flex my-4 gap-4">
-          <div className="cursor-pointer">
-            <i className="fa-solid fa-thumbs-up mr-1" />
-            <span className="text-gray-500">Like</span>
+        <div className="text-gray-500 flex my-4 gap-4">
+          <div className="text-sm cursor-pointer" title="Like" onClick={() => likeDislikeHandler()}>
+            <i className={`fa fa-${isLiked ? "heart" : "heart-o"} mr-1 fa-solid`} />
+            <span className="text-gray-500">
+              {likeCount === 0 ? "Be the first to like this" : `${likeCount} Likes`}
+            </span>
           </div>
-          <div className="cursor-pointer">
-            <i className="fa-solid fa-bookmark mr-1" />
+          <div className="text-sm cursor-pointer" title="Bookmark">
+            <i className="fa fa-bookmark-o mr-1 fa-solid " />
             <span className="text-gray-500">Bookmark</span>
           </div>
         </div>
