@@ -15,6 +15,7 @@ import {
   Login,
   SignUp,
   Bookmark,
+  AnyProfile,
 } from "./features";
 
 function App() {
@@ -70,6 +71,16 @@ function App() {
               <PrivateRoute>
                 <MainContainer>
                   <Bookmark />
+                </MainContainer>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/user-profile/:userId"
+            element={
+              <PrivateRoute>
+                <MainContainer>
+                  <AnyProfile />
                 </MainContainer>
               </PrivateRoute>
             }

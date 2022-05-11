@@ -1,5 +1,10 @@
 export { loginUserService, signUpService } from "./authService.js";
-export { updateUserService, getAllUserService } from "./userService.js";
+export {
+  updateUserService,
+  getAllUserService,
+  followUserService,
+  unFollowUserService,
+} from "./userService.js";
 export {
   getUserPostService,
   getAllPostService,
