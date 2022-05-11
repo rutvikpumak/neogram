@@ -6,3 +6,4 @@ export { Notification } from "./Notification/Notification";
 export { Login } from "./Auth/Login";
 export { SignUp } from "./Auth/SignUp";
 export { Bookmark } from "./Bookmark/Bookmark";
+export { AnyProfile } from "./Profile/AnyProfile";

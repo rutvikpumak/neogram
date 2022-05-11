@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { openPostModal } from "./Modal/postModalSlice";
 import { addAndRemoveBookmark, deleteUserPost, likeAndDislikePost } from "./postSlice";
 export function SinglePost({ post }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [editModal, setEditModal] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { allUsers } = useSelector((state) => state.user);
@@ -37,7 +38,13 @@ export function SinglePost({ post }) {
       <img src={userInfo?.profilePic} className="h-12 rounded-full" alt={userInfo?.userHandler} />
       <div className="post-container px-4 grow">
         <div className="flex items-center justify-between mb-2">
-          <div>
+          <div
+            onClick={() =>
+              user.userHandler === userInfo?.userHandler
+                ? navigate("/profile")
+                : navigate(`/user-profile/${userInfo?.userHandler}`)
+            }
+          >
             <span className="font-semibold mr-1 cursor-pointer">{`${userInfo?.firstName} ${userInfo?.lastName}`}</span>
             <span className="text-sm text-gray-400 cursor-pointer">@{userInfo?.userHandler}</span>
           </div>

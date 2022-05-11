@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: "user1",
+    _id: uuid(),
     firstName: "Rutvik",
     lastName: "Umak",
     username: "rutvikumak@gmail.com",
@@ -102,6 +102,5 @@ export const users = [
       "https://res.cloudinary.com/dgwzpbj4k/image/upload/v1650457645/baatchit/man_rp4ore.png",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-  }
-  
+  },
 ];
