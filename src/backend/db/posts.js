@@ -17,7 +17,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "balika@gmail.com",
-
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -31,6 +31,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "sagar@gmail.com",
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -44,6 +45,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "rutvikumak@gmail.com",
+    bookmark: [],
+
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -57,6 +60,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "rutvikumak@gmail.com",
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -70,6 +74,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "sagar@gmail.com",
+    bookmark: [],
 
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -84,6 +89,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "shrey@gmail.com",
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -97,6 +103,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "omkar@gmail.com",
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -111,6 +118,7 @@ export const posts = [
     },
     username: "sunil@gmail.com",
 
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -125,6 +133,7 @@ export const posts = [
     },
     username: "gaurav@gmail.com",
 
+    bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

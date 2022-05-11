@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { openPostModal } from "./Modal/postModalSlice";
-import { deleteUserPost, likeAndDislikePost } from "./postSlice";
+import { addAndRemoveBookmark, deleteUserPost, likeAndDislikePost } from "./postSlice";
 export function SinglePost({ post }) {
   const dispatch = useDispatch();
   const [editModal, setEditModal] = useState(false);
@@ -13,15 +14,22 @@ export function SinglePost({ post }) {
     content,
     username,
     likes: { likeCount, likedBy, dislikedBy },
+    bookmark,
   } = post;
   const userInfo = allUsers && allUsers?.find((user) => user.username === username);
   const isLiked = likedBy?.some((like) => like.username === user.username);
+  const isBookmarked = bookmark?.some((bookmarkPost) => bookmarkPost.username === user.username);
 
   const editHandler = () => {
     dispatch(openPostModal(post));
   };
+
   const likeDislikeHandler = () => {
     dispatch(likeAndDislikePost({ postId: _id, isLike: isLiked ? false : true }));
+  };
+
+  const addRemoveBookmarkHandler = () => {
+    dispatch(addAndRemoveBookmark({ postId: _id, isBookmark: isBookmarked ? false : true }));
   };
 
   return userInfo ? (
@@ -70,9 +78,13 @@ export function SinglePost({ post }) {
               {likeCount === 0 ? "Be the first to like this" : `${likeCount} Likes`}
             </span>
           </div>
-          <div className="text-sm cursor-pointer" title="Bookmark">
-            <i className="fa fa-bookmark-o mr-1 fa-solid " />
-            <span className="text-gray-500">Bookmark</span>
+          <div
+            className="text-sm cursor-pointer"
+            title="Bookmark"
+            onClick={() => addRemoveBookmarkHandler()}
+          >
+            <i className={`fa fa-${isBookmarked ? "bookmark" : "bookmark-o"} mr-1 fa-solid `} />
+            <span className="text-gray-500">{isBookmarked ? "Bookmarked" : "Bookmark"}</span>
           </div>
         </div>
         <div className="home-comment flex gap-3 my-4">
