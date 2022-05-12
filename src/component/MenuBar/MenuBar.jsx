@@ -27,11 +27,11 @@ export function MenuBar() {
           </li>
           <li>
             <NavLink
-              to="/notification"
+              to="/explore"
               className={({ isActive }) => (isActive ? "aside-option active " : "aside-option")}
             >
-              <i className="fa-solid fa-bell mr-3 md:mr-0" />
-              <span className="md:hidden">NOTIFICATION</span>
+              <i className="fa-solid fa-compass mr-3 md:mr-0" />
+              <span className="md:hidden">EXPLORE</span>
             </NavLink>
           </li>
           <li>

@@ -3,16 +3,28 @@ import "./Home.css";
 import { SinglePost } from "./SinglePost";
 import { openPostModal } from "./Modal/postModalSlice";
 import { getUserPost } from "./postSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 export function Home() {
   const { allPosts } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
+  const [feedPost, setFeedPost] = useState([]);
+  useEffect(
+    () =>
+      setFeedPost(
+        allPosts.filter(
+          (post) =>
+            post.username === user.username ||
+            user.following.find((ele) => post.username === ele.username)
+        )
+      ),
+    [user, allPosts]
+  );
 
   useEffect(() => {
     dispatch(getUserPost(user.username));
   }, [allPosts]);
+
   return (
     <div className={`home-container w-2/4  md:w-full md:mx-4 `}>
       <div
@@ -32,8 +44,8 @@ export function Home() {
         </div>
       </div>
       <div className="flex flex-col-reverse gap-6">
-        {allPosts.length !== 0 ? (
-          allPosts.map((post) => <SinglePost key={post._id} post={post} />)
+        {feedPost.length !== 0 ? (
+          feedPost.map((post) => <SinglePost key={post._id} post={post} />)
         ) : (
           <></>
         )}

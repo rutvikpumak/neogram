@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MainContainer, NavBar } from "./component";
 import { PrivateRoute } from "./component/PrivateRoute/PrivateRoute";
-import { getAllPost, getUserPost } from "./features/Home/postSlice";
+import { getAllPost, getUserPost, getFeedPost } from "./features/Home/postSlice";
 import { getAllUser } from "./features/Profile/userSlice";
 import {
   Home,
   Modal,
   Profile,
   ProfileModal,
-  Notification,
+  Explore,
   Login,
   SignUp,
   Bookmark,
@@ -56,11 +56,11 @@ function App() {
             }
           />
           <Route
-            path="/notification"
+            path="/explore"
             element={
               <PrivateRoute>
                 <MainContainer>
-                  <Notification />
+                  <Explore />
                 </MainContainer>
               </PrivateRoute>
             }

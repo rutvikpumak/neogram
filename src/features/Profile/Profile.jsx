@@ -11,6 +11,7 @@ export function Profile() {
   const { allUsers } = useSelector((state) => state.user);
   const { userPosts, allPosts } = useSelector((state) => state.post);
 
+  console.log(user);
   useEffect(() => {
     dispatch(getUserPost(user.username));
   }, [allPosts]);

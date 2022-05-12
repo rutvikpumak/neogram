@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { followUnFollowUser } from "../../features/Profile/userSlice";
 
 export function FollowBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { allUsers } = useSelector((state) => state.user);
   const [suggestion, setSuggestion] = useState([]);
-
   useEffect(
     () =>
       setSuggestion(
@@ -17,7 +18,8 @@ export function FollowBar() {
       ),
     [user, allUsers]
   );
-  return (
+
+  return allUsers.length > 0 ? (
     <div className="follow-container w-1/4 ml-8 p-4 bg-white rounded-2xl h-max sticky top-8 md:hidden">
       <p className="font-semibold pb-4">Who to follow</p>
       {suggestion.length > 0 ? (
@@ -26,10 +28,17 @@ export function FollowBar() {
             key={suggestUser._id}
             className="flex items-star  border-solid border-t-2 border-gray-300 py-4"
           >
-            <img src={suggestUser.profilePic} className="h-8 rounded-full self-center" />
+            <img
+              src={suggestUser.profilePic}
+              className="h-8 rounded-full self-center cursor-pointer"
+              onClick={() => navigate(`/user-profile/${suggestUser?.userHandler}`)}
+            />
 
-            <div className="flex grow justify-between ml-1">
-              <div>
+            <div className="flex grow justify-between ml-1 ">
+              <div
+                className="cursor-pointer"
+                onClick={() => navigate(`/user-profile/${suggestUser?.userHandler}`)}
+              >
                 <p className="font-semibold cursor-pointer">{`${suggestUser.firstName} ${suggestUser.lastName}`}</p>
                 <p className="text-xs text-gray-400 ">{suggestUser.userHandler}</p>
               </div>
@@ -58,5 +67,7 @@ export function FollowBar() {
         </div>
       )}
     </div>
+  ) : (
+    <></>
   );
 }

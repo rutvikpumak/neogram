@@ -14,14 +14,15 @@ export function AnyProfile() {
 
   useEffect(() => {
     setSingleUser(allUsers.find((user) => user.userHandler === userId));
-  }, [allUsers]);
+  }, [allUsers, userId]);
+
   useEffect(() => {
-    dispatch(getUserPost(singleUser.username));
+    dispatch(getUserPost(singleUser?.username));
   }, [singleUser, allPosts]);
 
   const isFollowing = singleUser?.followers?.some((anyUser) => anyUser.username === user.username);
 
-  return singleUser.username ? (
+  return singleUser?.username ? (
     <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
       <div
         className="profile-input bg-white
