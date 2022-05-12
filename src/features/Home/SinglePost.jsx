@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Comment } from "./Comment";
 import { openPostModal } from "./Modal/postModalSlice";
-import { addAndRemoveBookmark, deleteUserPost, likeAndDislikePost } from "./postSlice";
+import { addAndRemoveBookmark, addComment, deleteUserPost, likeAndDislikePost } from "./postSlice";
 export function SinglePost({ post }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [editModal, setEditModal] = useState(false);
+  const [comment, setComment] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { allUsers } = useSelector((state) => state.user);
   const {
@@ -16,6 +18,7 @@ export function SinglePost({ post }) {
     username,
     likes: { likeCount, likedBy, dislikedBy },
     bookmark,
+    comments,
   } = post;
   const userInfo = allUsers && allUsers?.find((user) => user.username === username);
   const isLiked = likedBy?.some((like) => like.username === user.username);
@@ -27,6 +30,11 @@ export function SinglePost({ post }) {
 
   const likeDislikeHandler = () => {
     dispatch(likeAndDislikePost({ postId: _id, isLike: isLiked ? false : true }));
+  };
+
+  const postHandler = () => {
+    dispatch(addComment({ postId: _id, commentData: comment }));
+    setComment("");
   };
 
   const addRemoveBookmarkHandler = () => {
@@ -94,24 +102,30 @@ export function SinglePost({ post }) {
             <span className="text-gray-500">{isBookmarked ? "Bookmarked" : "Bookmark"}</span>
           </div>
         </div>
-        <div className="home-comment flex gap-3 my-4">
-          <i className="text-3xl fa-solid fa-circle-user cursor-pointer" />
+        <div className="home-comment flex gap-3 my-4 mt-6">
+          <img src={user.profilePic} className="h-8 rounded-full  cursor-pointer" />
           <div className="self-center border-solid border border-gray-400 grow flex space-between items-center rounded-md px-2 py-1">
-            <input className="grow focus:outline-none" placeholder="Write your comment" />
-            <p className="text-sm text-blue-400 cursor-pointer font-semibold">POST</p>
+            <input
+              className="grow focus:outline-none"
+              placeholder="Write your comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            <button
+              className={`text-sm text-blue-400 cursor-pointer font-semibold ${
+                comment.trim().length < 1 && "hover:cursor-not-allowed"
+              }`}
+              onClick={() => postHandler()}
+              disabled={comment.trim().length < 1 ? true : false}
+            >
+              POST
+            </button>
           </div>
         </div>
-        {/* <div className="flex gap-3 my-4">
-          <i className="text-3xl fa-solid fa-circle-user cursor-pointer" />
-          <div className="bg-slate-200 rounded-2xl py-2 px-3">
-            <span className="text-sm font-semibold mr-2 cursor-pointer">Rutvik Umak</span>
-            <p className="text-sm text-gray-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nihil pariatur natus
-              autem quia officia soluta tempore architecto fugit nulla dolor maxime doloribus saepe,
-              dignissimos sequi repellat. Perspiciatis, vel animi!
-            </p>
-          </div>
-      </div>*/}
+        <div className="flex flex-col-reverse gap-4">
+          {comments.length > 0 &&
+            comments.map((comment) => <Comment key={comment._id} comment={comment} postId={_id} />)}
+        </div>
       </div>
     </div>
   ) : (

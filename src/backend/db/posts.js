@@ -20,6 +20,26 @@ export const posts = [
     bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "rutvikumak@gmail.com",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sagar@gmail.com",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
   },
   {
     _id: uuid(),
@@ -32,6 +52,26 @@ export const posts = [
     },
     username: "sagar@gmail.com",
     bookmark: [],
+    comments: [
+      {
+        _id: uuid(),
+        username: "balika@gmail.com",
+        text: "Looks good to me",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "shrey@gmail.com",
+        text: "Kuch bhi ?",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -46,7 +86,26 @@ export const posts = [
     },
     username: "rutvikumak@gmail.com",
     bookmark: [],
-
+    comments: [
+      {
+        _id: uuid(),
+        username: "balika@gmail.com",
+        text: "Lorem ipsum is not good comment",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "omkar@gmail.com",
+        text: "Ye meri expertise bilkul nahi hai",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -60,6 +119,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "rutvikumak@gmail.com",
+    comments: [],
     bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -76,6 +136,7 @@ export const posts = [
     username: "sagar@gmail.com",
     bookmark: [],
 
+    comments: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -89,6 +150,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "shrey@gmail.com",
+    comments: [],
     bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -103,6 +165,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "omkar@gmail.com",
+    comments: [],
     bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -117,6 +180,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "sunil@gmail.com",
+    comments: [],
 
     bookmark: [],
     createdAt: formatDate(),
@@ -132,7 +196,26 @@ export const posts = [
       dislikedBy: [],
     },
     username: "gaurav@gmail.com",
-
+    comments: [
+      {
+        _id: uuid(),
+        username: "sagar@gmail.com",
+        text: "Side hustle always works",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "rutvikumak@gmail.com",
+        text: "Ye sab doglapan hai",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
     bookmark: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),

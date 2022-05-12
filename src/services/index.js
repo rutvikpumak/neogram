@@ -19,3 +19,4 @@ export {
   addBookmarkService,
   removeBookmarkService,
 } from "./bookmarkService.js";
+export { addCommentService, editCommentService, deleteCommentService } from "./commentService.js";
