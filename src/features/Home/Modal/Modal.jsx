@@ -63,7 +63,7 @@ export function Modal() {
             className={`px-4 py-1 w-full rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-400  ${
               input.length < 5 && "hover:cursor-not-allowed"
             }`}
-            disabled={input.length < 5 ? true : false}
+            disabled={input.trim().length < 5 ? true : false}
             onClick={() => postHandler()}
           >
             Post

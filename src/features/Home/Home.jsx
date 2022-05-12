@@ -31,7 +31,7 @@ export function Home() {
           <i className="text-xl fa-solid fa-circle-plus cursor-pointer" />
         </div>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col-reverse gap-6">
         {allPosts.length !== 0 ? (
           allPosts.map((post) => <SinglePost key={post._id} post={post} />)
         ) : (
