@@ -75,7 +75,10 @@ export function Comment({ comment, postId }) {
           )}
         </div>
         {isEdit ? (
-          <form className="self-center border-gray-400 grow flex space-between items-center rounded-md pb-1">
+          <form
+            className="self-center border-gray-400 grow flex space-between items-center rounded-md pb-1"
+            onSubmit={() => editHandler()}
+          >
             <input
               className="text-sm grow focus:outline-none bg-slate-200 text-gray-600 border-b-2 border-gray-400 mr-4"
               value={inputComment}
