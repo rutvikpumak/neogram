@@ -10,7 +10,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+      "Mac has received a new update. Is there anyone who installed the update and is now kicking themselves ?",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -18,7 +18,7 @@ export const posts = [
     },
     username: "balika@gmail.com",
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2021-05-23T10:38:12+05:30",
     updatedAt: formatDate(),
     comments: [
       {
@@ -43,8 +43,7 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+    content: "Good Morning, What's your plan for the coming weekend ?",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -72,13 +71,12 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: "2022-01-25T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+    content: "You have confidence in your fears not your dreams. Hahaha.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -106,13 +104,12 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: "2022-01-25T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? ",
+    content: "The best investments are “buy and forget.” ",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -121,13 +118,13 @@ export const posts = [
     username: "rutvikumak@gmail.com",
     comments: [],
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2022-04-23T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+      "A founder gave an employee 10 days off during the notice period so that the employee could visit his sick grandmother. ",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -137,13 +134,12 @@ export const posts = [
     bookmark: [],
 
     comments: [],
-    createdAt: formatDate(),
+    createdAt: 1647076844,
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+    content: "Don’t ask questions whose answers you can’t accept.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -152,13 +148,13 @@ export const posts = [
     username: "shrey@gmail.com",
     comments: [],
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2022-04-01T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+      "Accidentally wrote ‘I’m god’ instead of ‘I’m good’ in a mail and I’m not even sorry about it",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -167,13 +163,13 @@ export const posts = [
     username: "omkar@gmail.com",
     comments: [],
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2021-04-30T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+      "Learn JavaScript in 60 minutes and then spend 9 months finding job.  Better to spend time on basics, build core and then find a job. 12 months is the least you should spend from your first program to job.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -183,13 +179,13 @@ export const posts = [
     comments: [],
 
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2022-03-14T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam possimus qui cumque reprehenderit molestias unde? Reiciendis assumenda, repellat asperiores tempora provident accusantium inventore, eligendi veniam explicabo minima atque suscipit..",
+      "All platforms are essentially no code tools. Facebook, Reddit, Twitter, GitHub.. gives you power to create your properties on Internet.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -217,7 +213,7 @@ export const posts = [
       },
     ],
     bookmark: [],
-    createdAt: formatDate(),
+    createdAt: "2022-05-13T10:38:12+05:30",
     updatedAt: formatDate(),
   },
 ];

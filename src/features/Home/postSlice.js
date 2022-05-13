@@ -31,7 +31,7 @@ export const getAllPost = createAsyncThunk("post/getAllPosts", async (_, thunkAP
 export const getUserPost = createAsyncThunk("post/getUserPosts", async (username, thunkAPI) => {
   try {
     const response = await getUserPostService(username);
-    return response.data;
+    return response.data.posts;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -41,7 +41,7 @@ export const addUserPost = createAsyncThunk("post/addUserPost", async (postData,
   try {
     const token = localStorage.getItem("token");
     const response = await addPostService(postData, token);
-    return response.data;
+    return response.data.posts;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -157,7 +157,7 @@ const postSlice = createSlice({
     },
     [getUserPost.fulfilled]: (state, action) => {
       state.postStatus = "fulfilled";
-      state.userPosts = action.payload.posts;
+      state.userPosts = action.payload;
     },
     [getUserPost.rejected]: (state, action) => {
       state.postStatus = "rejected";
@@ -168,7 +168,7 @@ const postSlice = createSlice({
     },
     [addUserPost.fulfilled]: (state, action) => {
       state.postStatus = "fulfilled";
-      state.allPosts = action.payload.posts;
+      state.allPosts = action.payload;
     },
     [addUserPost.rejected]: (state, action) => {
       state.postStatus = "rejected";

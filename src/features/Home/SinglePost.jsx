@@ -58,7 +58,7 @@ export function SinglePost({ post }) {
           </div>
           {user.username === username && (
             <div
-              className="rounded-full px-3 py-0.5 bg-gray-200 cursor-pointer relative"
+              className="rounded-full px-3 py-0.5 bg-gray-200 cursor-pointer relative duration-200"
               onClick={() => setEditModal(!editModal)}
             >
               <i className="text-sm fa-solid fa-ellipsis-vertical opacity-60" />
