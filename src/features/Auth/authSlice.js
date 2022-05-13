@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const initialState = {
   token: localStorage.getItem("token") || null,
-  user: JSON.parse(localStorage.getItem("user")) || { following: [] },
+  user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
 export const loginUser = createAsyncThunk(
@@ -50,7 +50,7 @@ const authSlice = createSlice({
       localStorage.removeItem("user");
       return {
         user: null,
-        token: { following: [] },
+        token: null,
       };
     },
   },
