@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginUserService, signUpService, updateUserService } from "../../services";
 import { toast } from "react-toastify";
+
 const initialState = {
   token: localStorage.getItem("token") || null,
-  user: JSON.parse(localStorage.getItem("user")) || null,
+  user: JSON.parse(localStorage.getItem("user")) || { following: [] },
 };
 
 export const loginUser = createAsyncThunk(
@@ -49,7 +50,7 @@ const authSlice = createSlice({
       localStorage.removeItem("user");
       return {
         user: null,
-        token: null,
+        token: { following: [] },
       };
     },
   },
