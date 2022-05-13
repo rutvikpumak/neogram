@@ -20,8 +20,8 @@ export function Home() {
         allPosts
           ?.filter(
             (post) =>
-              post.username === user.username ||
-              user.following.find((ele) => post.username === ele.username)
+              post?.username === user?.username ||
+              user?.following?.find((ele) => post?.username === ele?.username)
           )
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       );
@@ -43,8 +43,8 @@ export function Home() {
     setTrendPost((prev) => ({
       ...prev,
       posts: [...feedPost]
-        .sort((a, b) => b.likes.likeCount - a.likes.likeCount)
-        .filter((post) => post.likes.likeCount > 0),
+        ?.sort((a, b) => b.likes.likeCount - a.likes.likeCount)
+        ?.filter((post) => post.likes.likeCount > 0),
     }));
     dispatch(closeLoader());
   };
