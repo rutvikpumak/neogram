@@ -32,8 +32,9 @@ export const signUpUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk("auth/updateUser", async (userData, thunkAPI) => {
   try {
-    const response = await updateUserService(initialState.token, userData);
-    return response.data;
+    const token = localStorage.getItem("token");
+    const response = await updateUserService(token, userData);
+    return response.data.user;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -90,7 +91,7 @@ const authSlice = createSlice({
     },
     [updateUser.fulfilled]: (state, action) => {
       state.authStatus = "fulfilled";
-      state.user = action.payload.user;
+      state.user = action.payload;
       localStorage.setItem("user", JSON.stringify(state.user));
     },
     [updateUser.rejected]: (state, action) => {

@@ -16,7 +16,6 @@ export function Home() {
 
   useEffect(() => {
     if (allPosts) {
-      dispatch(openLoader());
       setFeedPost(
         allPosts
           ?.filter(
@@ -26,13 +25,17 @@ export function Home() {
           )
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       );
-      setTimeout(() => dispatch(closeLoader()), 1000);
     }
   }, [user, allPosts]);
 
   useEffect(() => {
     dispatch(getUserPost(user.username));
   }, [allPosts]);
+
+  useEffect(() => {
+    dispatch(openLoader());
+    setTimeout(() => dispatch(closeLoader()), 1000);
+  }, []);
 
   const trendingHandler = () => {
     dispatch(openLoader());

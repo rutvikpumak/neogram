@@ -14,10 +14,13 @@ export function Profile() {
   const { loader } = useSelector((state) => state.profileModal);
 
   useEffect(() => {
-    dispatch(openLoader());
     dispatch(getUserPost(user.username));
-    setTimeout(() => dispatch(closeLoader()), 1000);
   }, [allPosts]);
+
+  useEffect(() => {
+    dispatch(openLoader());
+    setTimeout(() => dispatch(closeLoader()), 1000);
+  }, []);
 
   useEffect(() => {
     dispatch(updateUser(user.username));
@@ -74,7 +77,7 @@ export function Profile() {
       {loader ? (
         <Loader />
       ) : (
-        <div className="flex flex-col-reverse gap-6 md:mb-14">
+        <div className="flex flex-col gap-6 md:mb-14">
           {userPosts.map((post) => (
             <SinglePost key={post._id} post={post} />
           ))}
