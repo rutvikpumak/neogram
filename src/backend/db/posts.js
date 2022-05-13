@@ -179,7 +179,7 @@ export const posts = [
     comments: [],
 
     bookmark: [],
-    createdAt: 1641826444,
+    createdAt: "2022-03-14T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
