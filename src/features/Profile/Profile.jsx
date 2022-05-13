@@ -45,8 +45,8 @@ export function Profile() {
         <div className="grow">
           <div className="flex justify-between mb-2">
             <div>
-              <p className="text-xl font-bold mr-2 cursor-pointer">{`${user.firstName} ${user.lastName}`}</p>
-              <p className="text-sm text-gray-400 cursor-pointer">@{user.userHandler}</p>
+              <p className="text-xl font-bold mr-2 cursor-pointer break-all">{`${user.firstName} ${user.lastName}`}</p>
+              <p className="text-sm text-gray-400 cursor-pointer break-all">@{user.userHandler}</p>
             </div>
             <button
               className="px-2 py-1 rounded-md font-semibold text-gray-500 hover:bg-gray-100  ring-1 ring-gray-500 ring-inset self-start"
@@ -55,7 +55,7 @@ export function Profile() {
               Edit
             </button>
           </div>
-          <p className="text-gray-500 font-semibold mb-2">{user.bio}</p>
+          <p className="text-gray-500 font-semibold mb-2 break-all">{user.bio}</p>
           <div className="flex text-gray-500 font-semibold gap-8 mb-2 sm:gap-2 sm:justify-between">
             <span>{userPosts.length} Posts</span>
             <span>{user.followers.length} Followers</span>
@@ -65,7 +65,7 @@ export function Profile() {
             <div>
               <a
                 href={user.link}
-                className="text-blue-500 hover:underline decoration-1"
+                className="text-blue-500 hover:underline decoration-1 break-all"
                 target="_blank"
               >
                 {user.link}

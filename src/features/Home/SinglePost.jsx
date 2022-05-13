@@ -89,15 +89,15 @@ export function SinglePost({ post }) {
         </div>
       </div>
 
-      <div className="post-container grow pt-4">
+      <div className="post-container grow pt-4 sm:pt-2">
         <div>
-          <p className="text-gray-500">{content}</p>
+          <p className="text-gray-600 break-all">{content}</p>
         </div>
-        <div className="text-gray-500 flex my-4 gap-4">
+        <div className="text-gray-500 flex my-4 gap-4 sm:my-2">
           <div className="text-sm cursor-pointer" title="Like" onClick={() => likeDislikeHandler()}>
             <i className={`fa fa-${isLiked ? "heart" : "heart-o"} mr-1 fa-solid`} />
             <span className="text-gray-500">
-              {likeCount === 0 ? "Be the first to like this" : `${likeCount} Likes`}
+              {likeCount === 0 ? "Like" : `${likeCount} ${likeCount === 1 ? "Like" : "Likes"}`}
             </span>
           </div>
           <div
@@ -109,11 +109,11 @@ export function SinglePost({ post }) {
             <span className="text-gray-500">{isBookmarked ? "Bookmarked" : "Bookmark"}</span>
           </div>
         </div>
-        <div className="home-comment flex gap-3 my-4 mt-6">
-          <img src={user.profilePic} className="h-8 rounded-full  cursor-pointer" />
+        <div className="home-comment flex gap-3 my-4 mt-6 sm:mt-4">
+          <img src={user.profilePic} className="h-8 rounded-full  cursor-pointer sm:h-6" />
           <div className="self-center border-solid border border-gray-400 grow flex space-between items-center rounded-md px-2 py-1">
             <input
-              className="grow focus:outline-none"
+              className="grow focus:outline-none sm:text-sm"
               placeholder="Write your comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}

@@ -95,7 +95,9 @@ export function Home() {
           {trendPost.posts.length !== 0 ? (
             [...trendPost.posts].map((post) => <SinglePost key={post._id} post={post} />)
           ) : (
-            <></>
+            <div className="text-xl m-auto text-gray-500 font-bold mt-16">
+              <p className="text-center">Like more posts to see what's trending</p>
+            </div>
           )}
         </div>
       ) : (
@@ -105,6 +107,9 @@ export function Home() {
           ) : (
             <></>
           )}
+          <div className="text-xl m-auto text-gray-500 font-bold my-4 sm:mb-8">
+            <p className="text-center">Follow some users to see feed</p>
+          </div>
         </div>
       )}
     </div>

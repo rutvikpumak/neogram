@@ -34,7 +34,7 @@ export function FollowBar() {
               onClick={() => navigate(`/user-profile/${suggestUser?.userHandler}`)}
             />
 
-            <div className="flex grow justify-between ml-1 ">
+            <div className="flex grow justify-between ml-1 lg:flex-col ">
               <div
                 className="cursor-pointer"
                 onClick={() => navigate(`/user-profile/${suggestUser?.userHandler}`)}
@@ -42,7 +42,7 @@ export function FollowBar() {
                 <p className="font-semibold cursor-pointer">{`${suggestUser.firstName} ${suggestUser.lastName}`}</p>
                 <p className="text-xs text-gray-400 ">{suggestUser.userHandler}</p>
               </div>
-              <div className="items-center">
+              <div className="items-center lg:mt-2">
                 <button
                   className="font-semibold  cursor-pointer text-white bg-blue-400 pl-2 py-1 pr-3 rounded-2xl hover:opacity-80"
                   onClick={() =>

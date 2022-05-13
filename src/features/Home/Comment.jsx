@@ -22,7 +22,7 @@ export function Comment({ comment, postId }) {
     <div className="flex gap-3">
       <img
         src={userInfo?.profilePic}
-        className="h-8 rounded-full cursor-pointer"
+        className="h-8 rounded-full cursor-pointer sm:h-6"
         onClick={() =>
           comment.username === user.username
             ? navigate("/profile")
@@ -96,7 +96,7 @@ export function Comment({ comment, postId }) {
             />
           </form>
         ) : (
-          <p className="text-sm text-gray-500 pb-1">{comment.text}</p>
+          <p className="text-sm text-gray-500 pb-1 break-all">{comment.text}</p>
         )}
       </div>
     </div>

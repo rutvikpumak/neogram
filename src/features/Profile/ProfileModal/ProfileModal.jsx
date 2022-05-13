@@ -47,7 +47,7 @@ export function ProfileModal() {
     <div
       className={`modal-container justify-center items-center fixed ${modal ? "flex" : "hidden"}`}
     >
-      <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 sm:w-4/5 lg:w-2/4">
+      <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl  w-4/5 max-w-md">
         <div
           onClick={() => {
             dispatch(closeModal());
@@ -58,7 +58,7 @@ export function ProfileModal() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex ">
-            <p className="text-gray-500 font-semibold gap-4 mr-4">Avatar </p>
+            <p className="text-gray-500 font-semibold gap-4 mr-4 w-1/6">Avatar </p>
             <div className="relative">
               <img
                 src={userForm?.profilePic}

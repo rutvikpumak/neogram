@@ -109,6 +109,20 @@ export const posts = [
   },
   {
     _id: uuid(),
+    content: "You can change your next 5 years life in 6 months by doing hard work",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "rutvikumak@gmail.com",
+    bookmark: [],
+    comments: [],
+    createdAt: "2022-02-25T10:38:12+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
     content: "The best investments are “buy and forget.” ",
     likes: {
       likeCount: 0,

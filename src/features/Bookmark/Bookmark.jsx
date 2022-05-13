@@ -30,7 +30,9 @@ export function Bookmark() {
         {bookmark.length > 0 ? (
           bookmark.map((post) => <SinglePost key={post._id} post={post} />)
         ) : (
-          <></>
+          <div className="text-xl m-auto text-gray-500 font-bold my-4 sm:mb-8">
+            <p className="text-center">No Bookmarks Yet</p>
+          </div>
         )}
       </div>
     </div>
