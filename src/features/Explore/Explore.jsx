@@ -14,7 +14,7 @@ export function Explore() {
       >
         EXPLORE
       </div>
-      <div className="flex flex-col-reverse gap-6">
+      <div className="flex flex-col-reverse gap-6 md:mb-14">
         {allPosts.length !== 0 ? (
           allPosts.map((post) => <SinglePost key={post._id} post={post} />)
         ) : (

@@ -26,7 +26,7 @@ export function Bookmark() {
       >
         BOOKMARK
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:mb-14">
         {bookmark.length > 0 ? (
           bookmark.map((post) => <SinglePost key={post._id} post={post} />)
         ) : (

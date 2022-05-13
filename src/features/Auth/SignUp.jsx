@@ -34,7 +34,7 @@ export function SignUp() {
 
   return (
     <div className="w-full h-screen text-gray-800  px-4 py-6 flex flex-col justify-center sm:py-12">
-      <div className="w-2/5 py-3 sm:max-w-xl mx-auto text-center md:w-3/4">
+      <div className="w-2/5 py-3 sm:max-w-xl mx-auto text-center sm:w-11/12">
         <div className="mt-4 bg-white shadow-md sm:rounded-lg text-left">
           <div className="h-2 bg-blue-500 rounded-t-md"></div>
           <div className="flex justify-center items-center pt-8 md:hidden">
