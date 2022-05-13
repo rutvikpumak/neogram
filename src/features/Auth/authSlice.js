@@ -96,7 +96,6 @@ const authSlice = createSlice({
     [updateUser.rejected]: (state, action) => {
       state.authStatus = "Error";
       state.error = action.payload;
-      toast.error("Failed to Update !");
     },
   },
 });
