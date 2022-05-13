@@ -42,10 +42,14 @@ export function SinglePost({ post }) {
   };
 
   return userInfo ? (
-    <div className="bg-white p-4 rounded-xl flex">
-      <img src={userInfo?.profilePic} className="h-12 rounded-full" alt={userInfo?.userHandler} />
-      <div className="post-container px-4 grow">
-        <div className="flex items-center justify-between mb-2">
+    <div className="bg-white p-4 rounded-xl flex flex-col">
+      <div className="flex">
+        <img
+          src={userInfo?.profilePic}
+          className="h-12 rounded-full sm:h-8"
+          alt={userInfo?.userHandler}
+        />
+        <div className="flex items-center justify-between mb-2 w-full">
           <div
             onClick={() =>
               user.userHandler === userInfo?.userHandler
@@ -53,7 +57,7 @@ export function SinglePost({ post }) {
                 : navigate(`/user-profile/${userInfo?.userHandler}`)
             }
           >
-            <span className="font-semibold mr-1 cursor-pointer">{`${userInfo?.firstName} ${userInfo?.lastName}`}</span>
+            <span className="text-lg font-semibold mr-1 cursor-pointer ml-2 sm:text-md">{`${userInfo?.firstName} ${userInfo?.lastName}`}</span>
             <span className="text-sm text-gray-400 cursor-pointer">@{userInfo?.userHandler}</span>
           </div>
           {user.username === username && (
@@ -83,6 +87,9 @@ export function SinglePost({ post }) {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="post-container grow pt-4">
         <div>
           <p className="text-gray-500">{content}</p>
         </div>

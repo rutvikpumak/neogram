@@ -29,9 +29,12 @@ export function Profile() {
       </div>
       <div
         className="profile-input bg-white
-        flex items-start p-4 rounded-xl gap-4 my-8 flex-wrap"
+        flex items-start p-4 rounded-xl gap-4 my-8 sm:gap-2"
       >
-        <img src={user.profilePic} className="h-20 w-20 rounded-full object-cover" />
+        <img
+          src={user.profilePic}
+          className="h-20 w-20 rounded-full object-cover sm:h-16 sm:w-16"
+        />
         <div className="grow">
           <div className="flex justify-between mb-2">
             <div>
@@ -46,7 +49,7 @@ export function Profile() {
             </button>
           </div>
           <p className="text-gray-500 font-semibold mb-2">{user.bio}</p>
-          <div className="flex text-gray-500 font-semibold gap-8 mb-2 ">
+          <div className="flex text-gray-500 font-semibold gap-8 mb-2 sm:gap-2 sm:justify-between">
             <span>{userPosts.length} Posts</span>
             <span>{user.followers.length} Followers</span>
             <span>{user.following.length} Following</span>
@@ -64,7 +67,7 @@ export function Profile() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:mb-14">
         {userPosts.map((post) => (
           <SinglePost key={post._id} post={post} />
         ))}

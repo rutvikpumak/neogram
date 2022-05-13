@@ -47,13 +47,13 @@ export function Home() {
     <div className={`home-container w-2/4  md:w-full md:mx-4 `}>
       <div
         className="home-input bg-white
-         px-4 py-3 rounded-xl gap-4 mb-6 text-center border-b-2 border-blue-400 font-semibold"
+         px-4 py-3 rounded-xl gap-4 mb-6 text-center border-b-2 border-blue-400 font-semibold sm:py-2 sm:mb-4"
       >
         FEED
       </div>
       <div
         className="home-input bg-white
-        flex justify-between items-center px-4 py-3 rounded-xl gap-4 mb-6"
+        flex justify-between items-center px-4 py-3 rounded-xl gap-4 mb-6 sm:mb-4 sm:py-2"
       >
         <i className="text-xl fa-solid fa-circle-user cursor-pointer" />
         <div className="grow flex justify-between" onClick={() => dispatch(openPostModal())}>
@@ -79,7 +79,7 @@ export function Home() {
         </div>
       </div>
       {trendPost.isTrend ? (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 md:mb-14">
           {trendPost.posts.length !== 0 ? (
             [...trendPost.posts].map((post) => <SinglePost key={post._id} post={post} />)
           ) : (
@@ -87,7 +87,7 @@ export function Home() {
           )}
         </div>
       ) : (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 md:mb-14">
           {feedPost.length !== 0 ? (
             feedPost.map((post) => <SinglePost key={post._id} post={post} />)
           ) : (

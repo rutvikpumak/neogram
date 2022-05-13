@@ -45,7 +45,7 @@ export function ProfileModal() {
     <div
       className={`modal-container justify-center items-center fixed ${modal ? "flex" : "hidden"}`}
     >
-      <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 lg:w-2/4">
+      <div className="modal-container-main flex flex-col gap-4 p-4 rounded-xl w-1/5 sm:w-4/5 lg:w-2/4">
         <div
           onClick={() => {
             dispatch(closeModal());
