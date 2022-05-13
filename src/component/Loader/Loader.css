@@ -1,0 +1,8 @@
+
+.loader-wrapper {
+    background: var(--bg-color);
+    z-index: 9999;
+    margin: auto;
+    height: calc(80% - 8.9rem);
+    width: 100%;
+}

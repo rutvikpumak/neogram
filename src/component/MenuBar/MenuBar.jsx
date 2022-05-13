@@ -1,9 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./MenuBar.css";
 import logo from "../../assets/social-logo.png";
 import { logoutUser } from "../../features/Auth/authSlice";
 import { useDispatch } from "react-redux";
 import { openPostModal } from "../../features/Home/Modal/postModalSlice";
+import { toast } from "react-toastify";
+
 export function MenuBar() {
   const dispatch = useDispatch();
   return (
@@ -56,6 +58,7 @@ export function MenuBar() {
             className="aside-option"
             onClick={() => {
               dispatch(logoutUser());
+              toast.success("Logged Out !");
             }}
           >
             <i className="fa-solid fa-arrow-right-from-bracket mr-3 md:mr-0" />

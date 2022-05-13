@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/social-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./authSlice";
+import { toast } from "react-toastify";
 
 export function Login() {
   const { token } = useSelector((state) => state.auth);
@@ -15,9 +16,9 @@ export function Login() {
   });
 
   useEffect(() => {
-    (async () => {
+    (() => {
       if (loginForm.email && loginForm.password !== "") {
-        await dispatch(loginUser(loginForm));
+        dispatch(loginUser(loginForm));
       }
     })();
   }, [loginForm.email, loginForm.password]);

@@ -1,18 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Loader } from "../../component";
 import { updateUser } from "../Auth/authSlice";
 import { getUserPost } from "../Home/postSlice";
 import { SinglePost } from "../Home/SinglePost";
-import { openModal } from "./profileModalSlice";
+import { closeLoader, openLoader, openModal } from "./profileModalSlice";
 
 export function Profile() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { allUsers } = useSelector((state) => state.user);
   const { userPosts, allPosts } = useSelector((state) => state.post);
+  const { loader } = useSelector((state) => state.profileModal);
 
   useEffect(() => {
+    dispatch(openLoader());
     dispatch(getUserPost(user.username));
+    setTimeout(() => dispatch(closeLoader()), 1000);
   }, [allPosts]);
 
   useEffect(() => {
@@ -67,11 +71,15 @@ export function Profile() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6 md:mb-14">
-        {userPosts.map((post) => (
-          <SinglePost key={post._id} post={post} />
-        ))}
-      </div>
+      {loader ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-col-reverse gap-6 md:mb-14">
+          {userPosts.map((post) => (
+            <SinglePost key={post._id} post={post} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

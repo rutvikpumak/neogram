@@ -4,15 +4,19 @@ import { SinglePost } from "./SinglePost";
 import { openPostModal } from "./Modal/postModalSlice";
 import { getUserPost } from "./postSlice";
 import { useEffect, useState } from "react";
+import { Loader } from "../../component";
+import { closeLoader, openLoader } from "../Profile/profileModalSlice";
 export function Home() {
   const { allPosts } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.auth);
+  const { loader } = useSelector((state) => state.profileModal);
   const dispatch = useDispatch();
   const [feedPost, setFeedPost] = useState([]);
   const [trendPost, setTrendPost] = useState({ isTrend: false, posts: [] });
 
   useEffect(() => {
     if (allPosts) {
+      dispatch(openLoader());
       setFeedPost(
         allPosts
           ?.filter(
@@ -22,6 +26,7 @@ export function Home() {
           )
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       );
+      setTimeout(() => dispatch(closeLoader()), 1000);
     }
   }, [user, allPosts]);
 
@@ -30,6 +35,7 @@ export function Home() {
   }, [allPosts]);
 
   const trendingHandler = () => {
+    dispatch(openLoader());
     setTrendPost((prev) => ({ ...prev, isTrend: true }));
     setTrendPost((prev) => ({
       ...prev,
@@ -37,6 +43,7 @@ export function Home() {
         .sort((a, b) => b.likes.likeCount - a.likes.likeCount)
         .filter((post) => post.likes.likeCount > 0),
     }));
+    dispatch(closeLoader());
   };
 
   const latestHandler = () => {
@@ -78,7 +85,9 @@ export function Home() {
           </span>
         </div>
       </div>
-      {trendPost.isTrend ? (
+      {loader ? (
+        <Loader />
+      ) : trendPost.isTrend ? (
         <div className="flex flex-col gap-6 md:mb-14">
           {trendPost.posts.length !== 0 ? (
             [...trendPost.posts].map((post) => <SinglePost key={post._id} post={post} />)

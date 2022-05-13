@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./ProfileModal.css";
 import { closeModal } from "../profileModalSlice";
 import { updateUser } from "../../Auth/authSlice";
+import { toast } from "react-toastify";
 
 export function ProfileModal() {
   const { modal } = useSelector((state) => state.profileModal);
@@ -12,6 +13,7 @@ export function ProfileModal() {
 
   const updateHandler = () => {
     dispatch(updateUser({ ...userForm }));
+    toast.success("User Info Updated !");
     dispatch(closeModal());
   };
 

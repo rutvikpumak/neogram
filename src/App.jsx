@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MainContainer, NavBar } from "./component";
 import { PrivateRoute } from "./component/PrivateRoute/PrivateRoute";
-import { getAllPost, getUserPost, getFeedPost } from "./features/Home/postSlice";
+import { getAllPost, getUserPost } from "./features/Home/postSlice";
 import { getAllUser } from "./features/Profile/userSlice";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 import {
   Home,
   Modal,
@@ -17,6 +20,7 @@ import {
   Bookmark,
   AnyProfile,
 } from "./features";
+import { Loader } from "./component/Loader/Loader";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +38,17 @@ function App() {
     <div className="container relative mx-auto">
       <Router>
         <NavBar />
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Routes>
           <Route
             path="/"
