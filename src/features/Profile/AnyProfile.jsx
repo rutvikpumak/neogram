@@ -15,13 +15,16 @@ export function AnyProfile() {
   const { userPosts, allPosts } = useSelector((state) => state.post);
   const { loader } = useSelector((state) => state.profileModal);
   useEffect(() => {
-    dispatch(openLoader());
     setSingleUser(allUsers.find((user) => user.userHandler === userId));
   }, [allUsers, userId]);
 
   useEffect(() => {
-    dispatch(getUserPost(singleUser?.username));
+    dispatch(openLoader());
     setTimeout(() => dispatch(closeLoader()), 500);
+  }, [userId]);
+
+  useEffect(() => {
+    dispatch(getUserPost(singleUser?.username));
   }, [singleUser, allPosts]);
 
   const isFollowing = singleUser?.followers?.some((anyUser) => anyUser.username === user.username);

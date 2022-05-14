@@ -8,7 +8,7 @@ export function MainContainer({ children }) {
       <MenuBar />
       <div className="relative w-2/4 md:w-full md:mx-4">
         <Search />
-        <div className=" mt-1 sm:mt-16">{children}</div>
+        <div className=" mt-1 sm:mt-32">{children}</div>
       </div>
       <FollowBar />
     </div>
