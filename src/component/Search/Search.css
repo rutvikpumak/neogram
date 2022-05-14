@@ -1,0 +1,4 @@
+.search-container{
+    background-color:var(--bg-color);
+    z-index: 1;
+}

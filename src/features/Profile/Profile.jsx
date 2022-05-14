@@ -27,16 +27,10 @@ export function Profile() {
   }, [allUsers]);
 
   return (
-    <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
-      <div
-        className="home-input bg-white
-         px-4 py-3 rounded-xl gap-4 mb-8 text-center border-b-2 border-blue-400 font-semibold"
-      >
-        PROFILE
-      </div>
+    <div>
       <div
         className="profile-input bg-white
-        flex items-start p-4 rounded-xl gap-4 my-8 sm:gap-2"
+        flex items-start p-4 rounded-xl gap-4 my-6 sm:gap-2"
       >
         <img
           src={user.profilePic}

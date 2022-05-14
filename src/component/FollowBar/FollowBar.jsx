@@ -15,6 +15,7 @@ export function FollowBar() {
         allUsers
           .filter((ele) => ele.username !== user.username)
           .filter((ele) => !user.following.find((ele2) => ele2._id === ele._id))
+          .slice(0, 4)
       ),
     [user, allUsers]
   );

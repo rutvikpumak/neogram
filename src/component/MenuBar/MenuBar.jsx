@@ -12,12 +12,12 @@ export function MenuBar() {
     <aside
       className={`aside-container flex flex-col mr-2 w-1/4 md:mr-0 md:fixed md:bottom-0 md:z-30 md:w-full `}
     >
-      <div className="sticky top-8">
+      <div className="sticky top-6">
         <header className="flex items-center font-bold text-blue-400 md:hidden">
           <img className="h-12" src={logo} />
-          <p className="title text-3xl ml-4">Neogram</p>
+          <p className="title text-3xl ml-4 sm:ml-2">Neogram</p>
         </header>
-        <main className="my-8 pr-4 md:pr-0 md:my-1 md:flex md:justify-around md:text-2xl md:pt-2">
+        <main className="my-6 pr-4 md:pr-0 md:my-1 md:flex md:justify-around md:text-2xl md:pt-2">
           <li>
             <NavLink
               to="/"

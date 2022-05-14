@@ -14,13 +14,7 @@ export function Explore() {
     setTimeout(() => dispatch(closeLoader()), 1000);
   }, []);
   return (
-    <div className={`home-container w-2/4  md:w-full md:mx-4 `}>
-      <div
-        className="home-input bg-white
-         px-4 py-3 rounded-xl gap-4 mb-8 text-center border-b-2 border-blue-400 font-semibold"
-      >
-        EXPLORE
-      </div>
+    <div>
       {loader ? (
         <Loader />
       ) : (

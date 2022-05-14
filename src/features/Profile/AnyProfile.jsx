@@ -27,14 +27,14 @@ export function AnyProfile() {
   const isFollowing = singleUser?.followers?.some((anyUser) => anyUser.username === user.username);
 
   return singleUser?.username ? (
-    <div className={`profile-container w-2/4  md:w-full md:mx-4`}>
+    <div>
       {loader ? (
         <Loader />
       ) : (
         <>
           <div
             className="profile-input bg-white
-        flex items-start p-4 rounded-xl gap-4 mt-4 mb-8 flex-wrap"
+        flex items-start p-4 rounded-xl gap-4 mt-4 mb-8 sm:gap-2 "
           >
             <img src={singleUser.profilePic} className="h-20 w-20 rounded-full object-cover" />
             <div className="grow">
@@ -44,7 +44,7 @@ export function AnyProfile() {
                   <p className="text-sm text-gray-400 cursor-pointer">@{singleUser.userHandler}</p>
                 </div>
                 <button
-                  className="font-semibold h-8 cursor-pointer text-white bg-blue-400 pl-2 py-1 pr-3 rounded-2xl hover:opacity-80"
+                  className="font-semibold h-8 cursor-pointer text-white bg-blue-400 pl-2 py-1 pr-3 rounded-2xl hover:opacity-80 sm:text-sm sm:px-2 sm:py-0 sm:pl-1"
                   onClick={() =>
                     dispatch(
                       followUnFollowUser({
@@ -59,7 +59,7 @@ export function AnyProfile() {
                 </button>
               </div>
               <p className="text-gray-500 font-semibold mb-2">{singleUser.bio}</p>
-              <div className="flex text-gray-500 font-semibold gap-8 mb-2 ">
+              <div className="flex text-gray-500 font-semibold gap-8 mb-2 sm:gap-0 sm:justify-between">
                 <span>{userPosts.length} Posts</span>
                 <span>{singleUser.followers.length} Followers</span>
                 <span>{singleUser.following.length} Following</span>
@@ -77,7 +77,7 @@ export function AnyProfile() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 md:mb-14">
             {userPosts.map((post) => (
               <SinglePost key={post._id} post={post} />
             ))}

@@ -54,20 +54,17 @@ export function Home() {
   };
 
   return (
-    <div className={`home-container w-2/4  md:w-full md:mx-4 `}>
+    <div className="home-container">
       <div
         className="home-input bg-white
-         px-4 py-3 rounded-xl gap-4 mb-6 text-center border-b-2 border-blue-400 font-semibold sm:py-2 sm:mb-4"
-      >
-        FEED
-      </div>
-      <div
-        className="home-input bg-white
-        flex justify-between items-center px-4 py-3 rounded-xl gap-4 mb-6 sm:mb-4 sm:py-2"
+        flex justify-between items-center px-4 py-2 rounded-xl gap-4 mb-6 sm:mb-4 sm:py-2 "
       >
         <i className="text-xl fa-solid fa-circle-user cursor-pointer" />
-        <div className="grow flex justify-between" onClick={() => dispatch(openPostModal())}>
-          <p className="grow focus:outline-none opacity-50">What's on your mind ?</p>
+        <div
+          className="grow flex justify-between items-center"
+          onClick={() => dispatch(openPostModal())}
+        >
+          <p className="grow focus:outline-none opacity-50 sm:text-sm">{`What's on your mind , ${user.firstName} ?`}</p>
           <i className="text-xl fa-solid fa-circle-plus cursor-pointer" />
         </div>
       </div>
