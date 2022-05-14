@@ -1,0 +1,5 @@
+@media screen and (max-width:767px) {
+    .auth-container {
+        height: calc(100vh - 3.5rem);
+    }
+}
