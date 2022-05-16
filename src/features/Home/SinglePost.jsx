@@ -34,6 +34,7 @@ export function SinglePost({ post }) {
   };
 
   const postHandler = () => {
+    viewAll > 2 && setViewAll((prev) => prev + 1);
     dispatch(addComment({ postId: _id, commentData: comment }));
     setComment("");
   };
@@ -133,8 +134,8 @@ export function SinglePost({ post }) {
             </button>
           </div>
         </div>
-        <div className={`flex flex-col${viewAll > 2 ? "-reverse" : ""}`}>
-          <div className="flex flex-col gap-4">
+        <div className={`flex items-start flex-col${viewAll > 2 ? "-reverse" : ""}`}>
+          <div className="flex flex-col gap-4 w-full">
             {comments.length > 0 &&
               [...comments]
                 .slice(0, viewAll)
