@@ -9,6 +9,7 @@ export function ProfileModal() {
   const { modal } = useSelector((state) => state.profileModal);
   const { user } = useSelector((state) => state.auth);
   const [userForm, setUserForm] = useState({});
+  const [loader, setLoader] = useState(false);
   const dispatch = useDispatch();
 
   const updateHandler = () => {
@@ -22,6 +23,7 @@ export function ProfileModal() {
   }, [user]);
 
   const updateImageHandler = async (image) => {
+    setLoader(true);
     try {
       const data = new FormData();
       data.append("file", image);
@@ -38,6 +40,7 @@ export function ProfileModal() {
         .catch((error) => {
           console.log(error);
         });
+      setLoader(false);
     } catch (error) {
       console.log(error);
     }
@@ -59,19 +62,23 @@ export function ProfileModal() {
         <div className="flex flex-col gap-4">
           <div className="flex ">
             <p className="text-gray-500 font-semibold gap-4 mr-4 w-1/6">Avatar </p>
-            <div className="relative">
-              <img
-                src={userForm?.profilePic}
-                className="h-12 w-12 rounded-full ml-6 object-cover"
-              />
-              <i className="fa-solid fa-camera absolute right-0 top-8 cursor-pointer bg-white rounded-full p-1" />
-              <input
-                className="cursor-pointer absolute top-8  right-0 opacity-0 w-8"
-                accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
-                type="file"
-                onChange={(e) => updateImageHandler(e.target.files[0])}
-              />
-            </div>
+            {loader ? (
+              <p className="text-gray-500 font-semibold ml-6 sm:text-sm">Updating... </p>
+            ) : (
+              <div className="relative">
+                <img
+                  src={userForm?.profilePic}
+                  className="h-12 w-12 rounded-full ml-6 object-cover"
+                />
+                <i className="fa-solid fa-camera absolute right-0 top-8 cursor-pointer bg-white rounded-full p-1" />
+                <input
+                  className="cursor-pointer absolute top-8  right-0 opacity-0 w-8"
+                  accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/jpg,image/webp"
+                  type="file"
+                  onChange={(e) => updateImageHandler(e.target.files[0])}
+                />
+              </div>
+            )}
           </div>
           <div className="flex justify-between">
             <p className="text-gray-500 font-semibold gap-4">Link </p>{" "}
@@ -92,8 +99,11 @@ export function ProfileModal() {
         </div>
         <div className="px-1 py-1 text-right">
           <button
-            className="px-4 py-1 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-400"
+            className={`px-4 py-1 rounded-lg bg-blue-500 text-white font-bold hover:bg-blue-400 ${
+              loader && "hover:cursor-not-allowed"
+            }`}
             onClick={() => updateHandler()}
+            disabled={loader ? true : false}
           >
             Update
           </button>

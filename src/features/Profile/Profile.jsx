@@ -55,11 +55,11 @@ export function Profile() {
             <span>{user.followers.length} Followers</span>
             <span>{user.following.length} Following</span>
           </div>
-          <div className="text-gray-500 text-xs font-semibold flex gap-4">
+          <div className="text-sm font-semibold flex gap-4">
             <div>
               <a
                 href={user.link}
-                className="text-blue-500 hover:underline decoration-1 break-all"
+                className="text-blue-400 hover:underline decoration-1 break-all"
                 target="_blank"
               >
                 {user.link}
@@ -72,9 +72,13 @@ export function Profile() {
         <Loader />
       ) : (
         <div className="flex flex-col gap-6 md:mb-14">
-          {userPosts.map((post) => (
-            <SinglePost key={post._id} post={post} />
-          ))}
+          {userPosts.length > 0 ? (
+            userPosts.map((post) => <SinglePost key={post._id} post={post} />)
+          ) : (
+            <div className="text-xl m-auto text-gray-500 font-bold my-4 sm:mb-8">
+              <p className="text-center">No Posts Yet</p>
+            </div>
+          )}
         </div>
       )}
     </div>

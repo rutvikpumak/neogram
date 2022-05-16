@@ -81,9 +81,13 @@ export function AnyProfile() {
             </div>
           </div>
           <div className="flex flex-col gap-6 md:mb-14">
-            {userPosts.map((post) => (
-              <SinglePost key={post._id} post={post} />
-            ))}
+            {userPosts.length > 0 ? (
+              userPosts.map((post) => <SinglePost key={post._id} post={post} />)
+            ) : (
+              <div className="text-xl m-auto text-gray-500 font-bold my-4 sm:mb-8">
+                <p className="text-center">No Posts Yet</p>
+              </div>
+            )}
           </div>
         </>
       )}

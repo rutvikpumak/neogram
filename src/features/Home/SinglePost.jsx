@@ -45,8 +45,8 @@ export function SinglePost({ post }) {
     <div className="bg-white p-4 rounded-xl flex flex-col">
       <div className="flex">
         <img
-          src={userInfo?.profilePic}
-          className="h-12 rounded-full sm:h-8"
+          src={user.userHandler === userInfo?.userHandler ? user.profilePic : userInfo?.profilePic}
+          className="h-12 w-12 rounded-full sm:h-8 sm:w-8"
           alt={userInfo?.userHandler}
         />
         <div className="flex items-center justify-between mb-2 w-full">
@@ -110,7 +110,10 @@ export function SinglePost({ post }) {
           </div>
         </div>
         <div className="home-comment flex gap-3 my-4 mt-6 sm:mt-4">
-          <img src={user.profilePic} className="h-8 rounded-full  cursor-pointer sm:h-6" />
+          <img
+            src={user.profilePic}
+            className="h-8 w-8 rounded-full  cursor-pointer sm:h-6 sm:w-6"
+          />
           <div className="self-center border-solid border border-gray-400 grow flex space-between items-center rounded-md px-2 py-1">
             <input
               className="grow focus:outline-none sm:text-sm"
