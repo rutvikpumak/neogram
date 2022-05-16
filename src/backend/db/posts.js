@@ -39,6 +39,15 @@ export const posts = [
           downvotedBy: [],
         },
       },
+      {
+        _id: uuid(),
+        username: "onkar@gmail.com",
+        text: "Noice!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
     ],
   },
   {
@@ -147,7 +156,17 @@ export const posts = [
     username: "sagar@gmail.com",
     bookmark: [],
 
-    comments: [],
+    comments: [
+      {
+        _id: uuid(),
+        username: "shrey@gmail.com",
+        text: "Thats amazing",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
     createdAt: 1647076844,
     updatedAt: formatDate(),
   },
@@ -220,6 +239,15 @@ export const posts = [
         _id: uuid(),
         username: "rutvikumak@gmail.com",
         text: "Ye sab doglapan hai",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sunil@gmail.com",
+        text: "Ha ha ye karlo pahile!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

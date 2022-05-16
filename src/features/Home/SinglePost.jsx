@@ -12,6 +12,7 @@ export function SinglePost({ post }) {
   const [comment, setComment] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { allUsers } = useSelector((state) => state.user);
+  const [viewAll, setViewAll] = useState(2);
   const {
     _id,
     content,
@@ -109,7 +110,7 @@ export function SinglePost({ post }) {
             <span className="text-gray-500">{isBookmarked ? "Bookmarked" : "Bookmark"}</span>
           </div>
         </div>
-        <div className="home-comment flex gap-3 my-4 mt-6 sm:mt-4">
+        <div className="home-comment flex gap-3 my-3 mt-6 sm:mt-4">
           <img
             src={user.profilePic}
             className="h-8 w-8 rounded-full  cursor-pointer sm:h-6 sm:w-6"
@@ -132,9 +133,21 @@ export function SinglePost({ post }) {
             </button>
           </div>
         </div>
-        <div className="flex flex-col-reverse gap-4">
-          {comments.length > 0 &&
-            comments.map((comment) => <Comment key={comment._id} comment={comment} postId={_id} />)}
+        <div className={`flex flex-col${viewAll > 2 ? "-reverse" : ""}`}>
+          <div className="flex flex-col gap-4">
+            {comments.length > 0 &&
+              [...comments]
+                .slice(0, viewAll)
+                .map((comment) => <Comment key={comment._id} comment={comment} postId={_id} />)}
+          </div>
+          {comments.length > 2 && (
+            <p
+              className="text-gray-500 cursor-pointer underline my-1 mb-2 ml-12 md:ml-10 text-sm hover:text-gray-700"
+              onClick={() => setViewAll(viewAll <= 2 ? comments.length : 2)}
+            >
+              {viewAll <= 2 ? "View all comments" : "Hide comments"}
+            </p>
+          )}
         </div>
       </div>
     </div>
