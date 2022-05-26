@@ -36,11 +36,14 @@ export function Login() {
       <div className="w-2/5 py-3 sm:max-w-xl mx-auto text-center sm:w-11/12">
         <div className="mt-4 bg-white shadow-md sm:rounded-lg text-left">
           <div className="h-2 bg-blue-500 rounded-t-md"></div>
-          <div className="flex justify-center items-center pt-8 md:hidden">
-            <img className="h-12" src={logo} />
-            <p className="text-blue-400 title text-3xl ml-2 font-bold">Welcome to Neogram</p>
+          <div className="flex flex-col justify-center items-center pt-2 my-2">
+            <div className="flex  justify-center items-center pt-2 md:hidden">
+              <img className="h-12" src={logo} />
+              <p className="text-blue-400 title text-3xl ml-2 font-bold">Welcome to Neogram</p>
+            </div>
+            <p className="text-blue-400 title text-md ml-2 font-bold">Connecting People</p>
           </div>
-          <div className="px-12 py-4 pb-8 sm:px-6">
+          <div className="px-12 py-4 pb-8 sm:px-6 sm:pt-0 sm:py-3">
             <span className="text-2xl flex justify-center font-semibold border-b-2 border-blue-400 pb-2 sm:text-xl">
               Sign In
             </span>

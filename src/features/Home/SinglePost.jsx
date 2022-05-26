@@ -20,6 +20,7 @@ export function SinglePost({ post }) {
     likes: { likeCount, likedBy, dislikedBy },
     bookmark,
     comments,
+    createdAt,
   } = post;
   const userInfo = allUsers && allUsers?.find((user) => user.username === username);
   const isLiked = likedBy?.some((like) => like.username === user.username);
@@ -43,12 +44,21 @@ export function SinglePost({ post }) {
     dispatch(addAndRemoveBookmark({ postId: _id, isBookmark: isBookmarked ? false : true }));
   };
 
+  const date = new Date(createdAt);
+  const [month, day, year, hour, minutes] = [
+    date.getMonth(),
+    date.getDate(),
+    date.getFullYear(),
+    date.getHours(),
+    date.getMinutes(),
+  ];
+
   return userInfo ? (
     <div className="bg-white p-4 rounded-xl flex flex-col">
-      <div className="flex">
+      <div className="flex sm:items-center">
         <img
           src={user.userHandler === userInfo?.userHandler ? user.profilePic : userInfo?.profilePic}
-          className="h-12 w-12 rounded-full sm:h-8 sm:w-8"
+          className="h-12 w-12 object-cover rounded-full sm:h-8 sm:w-8"
           alt={userInfo?.userHandler}
         />
         <div className="flex items-center justify-between mb-2 w-full">
@@ -59,12 +69,15 @@ export function SinglePost({ post }) {
                 : navigate(`/user-profile/${userInfo?.userHandler}`)
             }
           >
-            <span className="text-lg font-semibold mr-1 cursor-pointer ml-2 sm:text-md">{`${userInfo?.firstName} ${userInfo?.lastName}`}</span>
+            <span className="text-lg font-semibold mr-1 cursor-pointer ml-2 sm:text-sm">{`${userInfo?.firstName} ${userInfo?.lastName}`}</span>
             <span className="text-sm text-gray-400 cursor-pointer">@{userInfo?.userHandler}</span>
+            <p className="ml-2 text-sm text-gray-400 sm:text-xs">{`${year}/${
+              +month + 1
+            }/${day} ${hour}:${minutes}`}</p>
           </div>
           {user.username === username && (
             <div
-              className="rounded-full px-3 py-0.5 bg-gray-200 cursor-pointer relative duration-200"
+              className="rounded-full px-3 py-0.5 hover:bg-gray-200 cursor-pointer relative duration-200"
               onClick={() => setEditModal(!editModal)}
             >
               <i className="text-sm fa-solid fa-ellipsis-vertical opacity-60" />
@@ -91,7 +104,7 @@ export function SinglePost({ post }) {
         </div>
       </div>
 
-      <div className="post-container grow pt-4 sm:pt-2">
+      <div className="post-container grow pt-2 sm:pt-2">
         <div>
           <p className="text-gray-600 break-all">{content}</p>
         </div>
@@ -114,7 +127,7 @@ export function SinglePost({ post }) {
         <div className="home-comment flex gap-3 my-3 mt-6 sm:mt-4">
           <img
             src={user.profilePic}
-            className="h-8 w-8 rounded-full  cursor-pointer sm:h-6 sm:w-6"
+            className="h-8 w-8 rounded-full  cursor-pointer object-cover sm:h-6 sm:w-6"
           />
           <div className="self-center border-solid border border-gray-400 grow flex space-between items-center rounded-md px-2 py-1">
             <input

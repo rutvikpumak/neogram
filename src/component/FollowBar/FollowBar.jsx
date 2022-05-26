@@ -31,7 +31,7 @@ export function FollowBar() {
           >
             <img
               src={suggestUser.profilePic}
-              className="h-8 w-8 rounded-full self-center cursor-pointer"
+              className="h-8 w-8 object-cover rounded-full self-center cursor-pointer"
               onClick={() => navigate(`/user-profile/${suggestUser?.userHandler}`)}
             />
 

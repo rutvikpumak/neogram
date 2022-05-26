@@ -21,18 +21,18 @@ export function Comment({ comment, postId }) {
   return (
     <div className="flex gap-3">
       <img
-        src={userInfo?.profilePic}
-        className="h-8 rounded-full cursor-pointer sm:h-6"
+        src={user.userHandler === userInfo?.userHandler ? user.profilePic : userInfo?.profilePic}
+        className="h-8 w-8 rounded-full cursor-pointer object-cover sm:h-6 sm:w-6"
         onClick={() =>
           comment.username === user.username
             ? navigate("/profile")
             : navigate(`/user-profile/${userInfo?.userHandler}`)
         }
       />
-      <div className="bg-slate-200 rounded-xl py-1 px-3 grow">
-        <div className="flex justify-between h-6">
+      <div className="bg-slate-200 rounded-xl py-1 px-3 grow ">
+        <div className="flex justify-between h-6 sm:h-4">
           <span
-            className="text-sm font-semibold mr-2 cursor-pointer"
+            className="text-sm font-semibold mr-2 cursor-pointer sm:text-xs"
             onClick={() =>
               comment.username === user.username
                 ? navigate("/profile")

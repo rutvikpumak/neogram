@@ -41,7 +41,7 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "onkar@gmail.com",
+        username: "omkar@gmail.com",
         text: "Noice!",
         votes: {
           upvotedBy: [],
@@ -80,7 +80,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: "2022-01-25T10:38:12+05:30",
+    createdAt: "2022-01-25T15:48:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -113,7 +113,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: "2022-01-25T10:38:12+05:30",
+    createdAt: "2022-01-25T16:20:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -127,7 +127,7 @@ export const posts = [
     username: "rutvikumak@gmail.com",
     bookmark: [],
     comments: [],
-    createdAt: "2022-02-25T10:38:12+05:30",
+    createdAt: "2022-02-25T08:20:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -167,7 +167,7 @@ export const posts = [
         },
       },
     ],
-    createdAt: 1647076844,
+    createdAt: "2020-04-23T15:20:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -196,7 +196,7 @@ export const posts = [
     username: "omkar@gmail.com",
     comments: [],
     bookmark: [],
-    createdAt: "2021-04-30T10:38:12+05:30",
+    createdAt: "2021-04-30T10:08:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -212,7 +212,7 @@ export const posts = [
     comments: [],
 
     bookmark: [],
-    createdAt: "2022-03-14T10:38:12+05:30",
+    createdAt: "2022-03-14T20:08:12+05:30",
     updatedAt: formatDate(),
   },
   {
@@ -255,7 +255,7 @@ export const posts = [
       },
     ],
     bookmark: [],
-    createdAt: "2022-05-13T10:38:12+05:30",
+    createdAt: "2022-05-13T07:55:12+05:30",
     updatedAt: formatDate(),
   },
 ];
